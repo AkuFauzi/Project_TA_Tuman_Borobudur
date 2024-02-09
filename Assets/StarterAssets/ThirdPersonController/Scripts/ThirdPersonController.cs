@@ -106,6 +106,8 @@ namespace StarterAssets
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
+        public bool rotate = true;
+
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
@@ -261,7 +263,11 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (rotate == true)
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
+                
             }
 
 
