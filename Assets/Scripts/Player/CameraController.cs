@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     private StarterAssetsInputs StarterAssetsInputs;
     public LayerMask aimColliderLayer = new LayerMask();
     public Transform debugTranform;
+    public Transform bulletPrefab;
+    public Transform spawnBulletPosition;
     public ThirdPersonController thirdPersonController;
 
     private void Awake()
@@ -22,17 +24,19 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        shoot();
-        aim();
+        aimShoot();
 
     }
 
     void shoot()
     {
-
+        if (StarterAssetsInputs.shoot)
+        {
+            Instantiate(bulletPrefab, spawnBulletPosition);
+        }
     }
 
-    void aim()
+    void aimShoot()
     {
         Vector3 mouseWorldPosition = Vector3.zero;
 
@@ -60,6 +64,17 @@ public class CameraController : MonoBehaviour
         {
             aimVCam.gameObject.SetActive(false);
             thirdPersonController.rotate = true;
+        }
+
+        if (StarterAssetsInputs.shoot)
+        {
+            Vector3 bulletDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+            Vector3 noAimShootDIr = mouseWorldPosition;
+            noAimShootDIr.y = transform.position.y;
+            Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
+            Instantiate(bulletPrefab, spawnBulletPosition.position,Quaternion.LookRotation(bulletDir,Vector3.up));
+            transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 1000);
+            StarterAssetsInputs.shoot = false;
         }
     }
 }
