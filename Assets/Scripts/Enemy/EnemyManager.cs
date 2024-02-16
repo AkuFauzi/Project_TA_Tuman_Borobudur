@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EnemyManager : MonoBehaviour
 {
@@ -8,18 +9,47 @@ public abstract class EnemyManager : MonoBehaviour
     {
         WALK,
         CHASE,
+        IDLE,
+        RAGE,
+        DEATH
+    }
+    public ENEMYBEHAVIOURS State;
+    public ENEMYBEHAVIOURS GetState() { return State; }
+    public float moveSpeed;
+    public GameObject target;
+    public NavMeshAgent agent;
+    public Vector3 distanceToPlayer;
 
+    public virtual void Start()
+    {
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void Update()
     {
-        
+        switch (State)
+        {
+            case ENEMYBEHAVIOURS.WALK:
+                if(agent != null && agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    agent.SetDestination(RandomLocation());
+                }
+                break;
+            default:
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual Vector3 RandomLocation()
     {
-        
+        Vector3 finalpostion = Vector3.zero;
+        Vector3 randomposition = Random.insideUnitSphere * 87;
+        randomposition += transform.position;
+        if(NavMesh.SamplePosition(randomposition, out NavMeshHit hit, 87, 1))
+        {
+            finalpostion = hit.position;
+        }
+        return finalpostion;
     }
 }
