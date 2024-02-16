@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class CameraController : MonoBehaviour
+public class TPSController : MonoBehaviour
 {
     public CinemachineVirtualCamera aimVCam;
     private StarterAssetsInputs StarterAssetsInputs;
@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     public Transform bulletPrefab;
     public Transform spawnBulletPosition;
     public ThirdPersonController thirdPersonController;
+    public Transform mainCamera;
 
     private void Awake()
     {
@@ -26,14 +27,6 @@ public class CameraController : MonoBehaviour
     {
         aimShoot();
 
-    }
-
-    void shoot()
-    {
-        if (StarterAssetsInputs.shoot)
-        {
-            Instantiate(bulletPrefab, spawnBulletPosition);
-        }
     }
 
     void aimShoot()
@@ -72,9 +65,30 @@ public class CameraController : MonoBehaviour
             Vector3 noAimShootDIr = mouseWorldPosition;
             noAimShootDIr.y = transform.position.y;
             Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
-            Instantiate(bulletPrefab, spawnBulletPosition.position,Quaternion.LookRotation(bulletDir,Vector3.up));
-            transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 1000);
-            StarterAssetsInputs.shoot = false;
+
+            transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10000);
+
+            if (cooldown == false 
+                && mainCamera.transform.eulerAngles.y <= transform.eulerAngles.y + 10
+                && mainCamera.transform.eulerAngles.y >= transform.eulerAngles.y - 10)
+            {
+                cooldown = true;
+                StartCoroutine(delay());
+                IEnumerator delay()
+                {
+                    //
+                    
+                    Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
+                   
+                    yield return new WaitForSeconds(1);
+                    cooldown = false;
+                }
+            }
+
+
+          
+            //StarterAssetsInputs.shoot = false;
         }
     }
+    bool cooldown;
 }

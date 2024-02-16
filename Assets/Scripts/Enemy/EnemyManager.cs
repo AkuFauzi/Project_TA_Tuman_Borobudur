@@ -11,14 +11,17 @@ public abstract class EnemyManager : MonoBehaviour
         CHASE,
         IDLE,
         RAGE,
-        DEATH
+        DEATH,
+        ATTACK
     }
     public ENEMYBEHAVIOURS State;
     public ENEMYBEHAVIOURS GetState() { return State; }
     public float moveSpeed;
+    public float walkRadius;
     public GameObject target;
     public NavMeshAgent agent;
     public Vector3 distanceToPlayer;
+    public Collider head, body;
 
     public virtual void Start()
     {
@@ -31,7 +34,7 @@ public abstract class EnemyManager : MonoBehaviour
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                if(agent != null && agent.remainingDistance <= agent.stoppingDistance)
+                if (agent != null)
                 {
                     agent.SetDestination(RandomLocation());
                 }
@@ -44,12 +47,13 @@ public abstract class EnemyManager : MonoBehaviour
     public virtual Vector3 RandomLocation()
     {
         Vector3 finalpostion = Vector3.zero;
-        Vector3 randomposition = Random.insideUnitSphere * 87;
+        Vector3 randomposition = Random.insideUnitSphere * walkRadius;
         randomposition += transform.position;
-        if(NavMesh.SamplePosition(randomposition, out NavMeshHit hit, 87, 1))
+        if(NavMesh.SamplePosition(randomposition, out NavMeshHit hit, walkRadius, 1))
         {
             finalpostion = hit.position;
         }
         return finalpostion;
+        
     }
 }
