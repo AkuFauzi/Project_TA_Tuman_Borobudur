@@ -9,6 +9,7 @@ public class Tuyul : EnemyManager
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
+        agent.speed = moveSpeed;
     }
 
     public override void Update()
