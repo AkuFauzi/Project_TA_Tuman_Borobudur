@@ -18,7 +18,7 @@ public class Pocong : EnemyManager
             State = ENEMYBEHAVIOURS.WALK;
             
         }
-        int randomenum = Random.Range(0, 5);
+        /*int randomenum = Random.Range(0, 5);
         switch (randomenum)
         {
             case 0: State = ENEMYBEHAVIOURS.WALK; break; 
@@ -26,7 +26,7 @@ public class Pocong : EnemyManager
             case 2: State = ENEMYBEHAVIOURS.IDLE; break; 
             case 3: State = ENEMYBEHAVIOURS.RAGE; break; 
             case 4: State = ENEMYBEHAVIOURS.DEATH; break; 
-        }
+        }*/
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
