@@ -17,6 +17,7 @@ public abstract class EnemyManager : MonoBehaviour
     public ENEMYBEHAVIOURS State;
     public ENEMYBEHAVIOURS GetState() { return State; }
     public float moveSpeed;
+    public float acceleration;
     public float walkRadius;
     public int healthPoint;
     public int attackPoint;

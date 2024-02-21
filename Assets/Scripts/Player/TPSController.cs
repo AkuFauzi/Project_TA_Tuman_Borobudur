@@ -17,6 +17,8 @@ public class TPSController : MonoBehaviour
     public ThirdPersonController thirdPersonController;
     public Transform mainCamera;
 
+    public float firerate = 5f;
+
     private void Awake()
     {
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
@@ -80,7 +82,7 @@ public class TPSController : MonoBehaviour
                     
                     Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
                    
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(1 / firerate);
                     cooldown = false;
                 }
             }

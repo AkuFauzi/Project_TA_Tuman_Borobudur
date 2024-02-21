@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Pocong : EnemyManager
+public class Banaspati : EnemyManager
 {
     public override void Start()
     {
