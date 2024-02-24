@@ -32,12 +32,12 @@ public class Pocong : EnemyManager
         {
             case ENEMYBEHAVIOURS.WALK:
                 Debug.Log("Mulai");
-                moveSpeed = 5;
+                agent.speed = 5;
                 agent.SetDestination(RandomLocation());
                 break;
             case ENEMYBEHAVIOURS.CHASE:
                 Debug.Log("Kejar");
-                moveSpeed = 20;
+                agent.speed = 20;
                 agent.SetDestination(target.transform.position);
                 break;
             case ENEMYBEHAVIOURS.IDLE:

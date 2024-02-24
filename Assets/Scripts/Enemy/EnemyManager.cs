@@ -28,7 +28,8 @@ public abstract class EnemyManager : MonoBehaviour
 
     public virtual void Start()
     {
-
+        moveSpeed = agent.speed;
+        acceleration = agent.acceleration;
         agent = GetComponent<NavMeshAgent>();
     }
 

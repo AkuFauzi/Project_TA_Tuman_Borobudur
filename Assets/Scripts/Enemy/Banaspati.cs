@@ -9,15 +9,21 @@ public class Banaspati : EnemyManager
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
-        agent.speed = moveSpeed;
+        agent.speed = agent.speed;
+        acceleration = agent.acceleration;
     }
     public override void Update()
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= 5)
         {
-            Debug.Log("Jalan");
-            State = ENEMYBEHAVIOURS.WALK;
+            Debug.Log("Serang");
+            State = ENEMYBEHAVIOURS.ATTACK;
             
+        }
+
+        if (healthPoint <= 25)
+        {
+            State = ENEMYBEHAVIOURS.RAGE;
         }
         /*int randomenum = Random.Range(0, 5);
         switch (randomenum)
@@ -32,21 +38,35 @@ public class Banaspati : EnemyManager
         {
             case ENEMYBEHAVIOURS.WALK:
                 Debug.Log("Mulai");
-                moveSpeed = 5;
+                agent.speed = 5;
                 agent.SetDestination(RandomLocation());
+
                 break;
             case ENEMYBEHAVIOURS.CHASE:
                 Debug.Log("Kejar");
-                moveSpeed = 20;
+                agent.speed = 20;
                 agent.SetDestination(target.transform.position);
+
                 break;
             case ENEMYBEHAVIOURS.IDLE:
+
+
                 break;
             case ENEMYBEHAVIOURS.RAGE:
+                Debug.Log("Marah");
+                agent.speed = 150;
+                //gameObject.transform.GetChild(0).transform.Translate(target.transform.position * Time.deltaTime);
+                agent.SetDestination(target.transform.position);
+
+
                 break;
             case ENEMYBEHAVIOURS.DEATH:
+
+
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
+
+
                 break;
         }
     }
@@ -56,7 +76,7 @@ public class Banaspati : EnemyManager
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet" )
         {
             healthPoint -= 10;
             Debug.Log("Kena");

@@ -26,12 +26,12 @@ public class Tuyul : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                moveSpeed = 100;
+                agent.speed = 100;
                 acceleration = 100;
                 agent.SetDestination(RandomLocation());
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                moveSpeed = 250;
+                agent.speed = 250;
                 agent.SetDestination(target.transform.position);
                 break;
             case ENEMYBEHAVIOURS.IDLE:
