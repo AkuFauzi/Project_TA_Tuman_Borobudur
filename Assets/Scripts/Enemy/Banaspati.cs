@@ -25,6 +25,12 @@ public class Banaspati : EnemyManager
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
+        else if (healthPoint <= 0)
+        {
+            State = ENEMYBEHAVIOURS.DEATH;
+        }
+
+
         /*int randomenum = Random.Range(0, 5);
         switch (randomenum)
         {
