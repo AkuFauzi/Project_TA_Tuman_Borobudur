@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class TPSController : MonoBehaviour
 {
@@ -16,19 +17,50 @@ public class TPSController : MonoBehaviour
     public Transform spawnBulletPosition;
     public ThirdPersonController thirdPersonController;
     public Transform mainCamera;
+    public ButtonManager buttonManager;
+
+    PlayerInput playerInput;
 
     public float firerate = 5f;
+
+    public bool inpause;
 
     private void Awake()
     {
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
+        playerInput = GetComponent<PlayerInput>();
+        buttonManager = FindObjectOfType<ButtonManager>();
+        aimVCam = GetComponent<CinemachineVirtualCamera>();
+        inpause = false;
     }
 
     private void Update()
     {
         aimShoot();
+        pause();
 
+    }
+
+    public void pause()
+    {
+        if (StarterAssetsInputs.pause && inpause == false)
+        {
+            inpause = true;
+            thirdPersonController.enabled = false;
+            Time.timeScale = 0;
+            buttonManager.SettingUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(buttonManager.settingFirst);
+            StarterAssetsInputs.pause = false;
+        }
+        else if (StarterAssetsInputs.pause && inpause == true)
+        {
+            inpause = false;
+            thirdPersonController.enabled = true;
+            Time.timeScale = 1;
+            buttonManager.SettingUI.SetActive(false);
+            StarterAssetsInputs.pause = false;
+        }
     }
 
     void aimShoot()
@@ -54,6 +86,11 @@ public class TPSController : MonoBehaviour
             Vector3 aimDir = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * 20);
+
+            if (StarterAssetsInputs.CPCam)
+            {
+                
+            }
         }
         else
         {
@@ -78,7 +115,6 @@ public class TPSController : MonoBehaviour
                 StartCoroutine(delay());
                 IEnumerator delay()
                 {
-                    //
                     
                     Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
                    
@@ -86,11 +122,9 @@ public class TPSController : MonoBehaviour
                     cooldown = false;
                 }
             }
-
-
-          
             //StarterAssetsInputs.shoot = false;
         }
     }
     bool cooldown;
+
 }

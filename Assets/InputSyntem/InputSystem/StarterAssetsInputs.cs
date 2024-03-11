@@ -14,6 +14,8 @@ namespace StarterAssets
 		public bool sprint;
 		public bool aim;
 		public bool shoot;
+		public bool pause;
+		public bool CPCam;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -55,10 +57,19 @@ namespace StarterAssets
 		{
 			ShootInput(value.isPressed);
 		}
+        public void OnPause(InputValue value)
+        {
+            PauseInput(value.isPressed);
+        }
+
+        public void OnChangeCam(InputValue value)
+        {
+            CPCamInput(value.isPressed);
+        }
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -88,7 +99,17 @@ namespace StarterAssets
 			shoot = newShootState;
 		}
 
-		private void OnApplicationFocus(bool hasFocus)
+		public void PauseInput(bool newPauseState)
+		{
+			pause = newPauseState;
+		}
+
+        public void CPCamInput(bool newPauseState)
+        {
+            CPCam = newPauseState;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}
