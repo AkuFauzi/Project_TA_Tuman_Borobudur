@@ -9,8 +9,9 @@ using UnityEngine.EventSystems;
 
 public class TPSController : MonoBehaviour
 {
-    public CinemachineVirtualCamera aimVCam;
     private StarterAssetsInputs StarterAssetsInputs;
+    public CinemachineVirtualCamera aimVCam;
+    private WeaponAmmo weaponAmmo;
     public LayerMask aimColliderLayer = new LayerMask();
     public Transform debugTranform;
     public Transform bulletPrefab;
@@ -29,9 +30,9 @@ public class TPSController : MonoBehaviour
     {
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
+        weaponAmmo = GetComponent<WeaponAmmo>();
         playerInput = GetComponent<PlayerInput>();
         buttonManager = FindObjectOfType<ButtonManager>();
-        aimVCam = GetComponent<CinemachineVirtualCamera>();
         inpause = false;
     }
 
@@ -86,11 +87,6 @@ public class TPSController : MonoBehaviour
             Vector3 aimDir = (worldAimTarget - transform.position).normalized;
 
             transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * 20);
-
-            if (StarterAssetsInputs.CPCam)
-            {
-                
-            }
         }
         else
         {
@@ -100,31 +96,44 @@ public class TPSController : MonoBehaviour
 
         if (StarterAssetsInputs.shoot)
         {
-            Vector3 bulletDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            Vector3 noAimShootDIr = mouseWorldPosition;
-            noAimShootDIr.y = transform.position.y;
-            Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
-
-            transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10000);
-
-            if (cooldown == false 
-                && mainCamera.transform.eulerAngles.y <= transform.eulerAngles.y + 10
-                && mainCamera.transform.eulerAngles.y >= transform.eulerAngles.y - 10)
+            if(shoot == true)
             {
-                cooldown = true;
-                StartCoroutine(delay());
-                IEnumerator delay()
+                Vector3 bulletDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+                Vector3 noAimShootDIr = mouseWorldPosition;
+                noAimShootDIr.y = transform.position.y;
+                Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
+
+                transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10000);
+
+                if (cooldown == false
+                    && mainCamera.transform.eulerAngles.y <= transform.eulerAngles.y + 10
+                    && mainCamera.transform.eulerAngles.y >= transform.eulerAngles.y - 10)
                 {
-                    
-                    Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
-                   
-                    yield return new WaitForSeconds(1 / firerate);
-                    cooldown = false;
+                    cooldown = true;
+                    StartCoroutine(delay());
+                    IEnumerator delay()
+                    {
+
+                        Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
+                        weaponAmmo.currentAmmo = weaponAmmo.currentAmmo - 1;
+                        yield return new WaitForSeconds(1 / firerate);
+                        cooldown = false;
+                    }
                 }
             }
+            if (weaponAmmo.currentAmmo == 0)
+            {
+                shoot = false;
+            }
+            else
+            {
+                shoot = true;
+            }
+           
             //StarterAssetsInputs.shoot = false;
         }
     }
     bool cooldown;
+    bool shoot;
 
 }

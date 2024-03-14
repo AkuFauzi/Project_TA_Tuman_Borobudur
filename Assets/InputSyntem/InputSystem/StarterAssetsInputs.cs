@@ -15,7 +15,7 @@ namespace StarterAssets
 		public bool aim;
 		public bool shoot;
 		public bool pause;
-		public bool CPCam;
+		public bool pickup;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -62,9 +62,9 @@ namespace StarterAssets
             PauseInput(value.isPressed);
         }
 
-        public void OnChangeCam(InputValue value)
+        public void OnPickUp(InputValue value)
         {
-            CPCamInput(value.isPressed);
+            PickUpInput(value.isPressed);
         }
 #endif
 
@@ -104,9 +104,9 @@ namespace StarterAssets
 			pause = newPauseState;
 		}
 
-        public void CPCamInput(bool newPauseState)
+        public void PickUpInput(bool newPauseState)
         {
-            CPCam = newPauseState;
+            pickup = newPauseState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

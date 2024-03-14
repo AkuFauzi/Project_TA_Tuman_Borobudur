@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PickUp",
+                    "type": "Button",
+                    "id": "a20d4bd3-42eb-4cab-83a9-1a49c79fc547",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "ChangePositionCam",
                     "type": "Button",
                     "id": "fb3c2943-d484-419b-b6fe-a162bf75655b",
@@ -329,6 +338,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ChangePositionCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "961d54f2-67cd-46fe-a52d-8dbc53e50bfa",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8661037f-2f2f-489e-ab1c-645b284cbf76",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "PickUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
