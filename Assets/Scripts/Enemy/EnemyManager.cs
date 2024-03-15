@@ -23,6 +23,7 @@ public abstract class EnemyManager : MonoBehaviour
     public int attackPoint;
     public GameObject target;
     public NavMeshAgent agent;
+    public HealthBar healthBar;
     public Vector3 distanceToPlayer;
     public Collider head, body;
 

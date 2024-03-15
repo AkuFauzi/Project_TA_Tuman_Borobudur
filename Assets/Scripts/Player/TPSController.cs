@@ -12,6 +12,7 @@ public class TPSController : MonoBehaviour
     private StarterAssetsInputs StarterAssetsInputs;
     public CinemachineVirtualCamera aimVCam;
     private WeaponAmmo weaponAmmo;
+    private HealthBar healthBar;
     public LayerMask aimColliderLayer = new LayerMask();
     public Transform debugTranform;
     public Transform bulletPrefab;
@@ -31,6 +32,7 @@ public class TPSController : MonoBehaviour
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
         weaponAmmo = GetComponent<WeaponAmmo>();
+        healthBar = GetComponent<HealthBar>();
         playerInput = GetComponent<PlayerInput>();
         buttonManager = FindObjectOfType<ButtonManager>();
         inpause = false;
@@ -38,6 +40,10 @@ public class TPSController : MonoBehaviour
 
     private void Update()
     {
+        if(healthBar.currentHealth == 0)
+        {
+            
+        }
         aimShoot();
         pause();
 
