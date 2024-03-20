@@ -46,7 +46,7 @@ public class HealthBar : MonoBehaviour
             StartCoroutine(delay());
             IEnumerator delay()
             {
-                if (other.gameObject.tag == "Enemy")
+                if (other.gameObject.tag == "Enemy" && currentHealth != 0)
                 {
                     currentHealth -= 10;
                 }
