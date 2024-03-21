@@ -11,6 +11,7 @@ public class ButtonManager : MonoBehaviour
     [Header("Button pertama")]
     public GameObject mainMenuIFirst;
     public GameObject settingFirst;
+    public GameObject NextBookBT;
 
     bool setting;
     // Start is called before the first frame update

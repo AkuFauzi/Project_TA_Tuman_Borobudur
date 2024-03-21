@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BukuManager : MonoBehaviour
@@ -58,6 +59,7 @@ public class BukuManager : MonoBehaviour
         if(currentIndex == 0)
         {
             BackBT.gameObject.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(NextBT.gameObject);
         }
     }
     public void Next()
@@ -66,6 +68,7 @@ public class BukuManager : MonoBehaviour
         if(currentIndex == maxIndex - 1)
         {
             NextBT.gameObject.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(BackBT.gameObject);
         }
         if(currentIndex >= 1)
         {

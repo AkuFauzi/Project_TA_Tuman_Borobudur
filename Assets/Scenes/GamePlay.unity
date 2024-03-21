@@ -1271,18 +1271,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1982189162}
+    m_SelectOnRight: {fileID: 1982189162}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.5415094, b: 0.5415094, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -3009,6 +3009,11 @@ PrefabInstance:
       objectReference: {fileID: 386721588}
     - target: {fileID: 5340272568827926632, guid: b0bbffd4093210148936b9485b207c1e,
         type: 3}
+      propertyPath: NextBookBT
+      value: 
+      objectReference: {fileID: 690799392}
+    - target: {fileID: 5340272568827926632, guid: b0bbffd4093210148936b9485b207c1e,
+        type: 3}
       propertyPath: settingFirst
       value: 
       objectReference: {fileID: 386721587}
@@ -3074,6 +3079,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bbffd4093210148936b9485b207c1e, type: 3}
+--- !u!114 &1705838400 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5340272568827926632, guid: b0bbffd4093210148936b9485b207c1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705838399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f64bd3e2631d94c90b616ae002ee42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1718447590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3728,18 +3745,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 690799393}
+    m_SelectOnRight: {fileID: 690799393}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.3433962, b: 0.3433962, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.2867924, b: 0.2867924, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4851,6 +4868,7 @@ MonoBehaviour:
   shoot: 0
   pause: 0
   pickup: 0
+  openBook: 0
   analogMovement: 0
   cursorLocked: 0
   cursorInputForLook: 1
@@ -4876,9 +4894,11 @@ MonoBehaviour:
   spawnBulletPosition: {fileID: 838323096}
   thirdPersonController: {fileID: 0}
   mainCamera: {fileID: 5542111180509655473}
-  buttonManager: {fileID: 0}
+  buttonManager: {fileID: 1705838400}
+  book: {fileID: 1522050947}
   firerate: 1
   inpause: 0
+  onbook: 0
 --- !u!114 &6988459656410646219
 MonoBehaviour:
   m_ObjectHideFlags: 0

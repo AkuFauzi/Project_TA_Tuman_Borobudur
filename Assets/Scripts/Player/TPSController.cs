@@ -21,6 +21,8 @@ public class TPSController : MonoBehaviour
     public Transform mainCamera;
     public ButtonManager buttonManager;
 
+    public GameObject book;
+
     PlayerInput playerInput;
 
     public float firerate = 5f;
@@ -37,6 +39,8 @@ public class TPSController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         buttonManager = FindObjectOfType<ButtonManager>();
         inpause = false;
+        onbook = false;
+        book.SetActive(false);
     }
 
     private void Update()
@@ -47,7 +51,7 @@ public class TPSController : MonoBehaviour
         }
         aimShoot();
         pause();
-
+        OpenBook();
     }
 
     public void pause()
@@ -73,7 +77,21 @@ public class TPSController : MonoBehaviour
 
     public void OpenBook()
     {
-
+        if(StarterAssetsInputs.openBook && onbook == false)
+        {
+            onbook = true;
+            Time.timeScale = 0;
+            book.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
+            StarterAssetsInputs.openBook = false;
+        }
+        else if(StarterAssetsInputs.openBook && inpause == true)
+        {
+            onbook = false;
+            Time.timeScale = 1;
+            book.SetActive(false);
+            StarterAssetsInputs.openBook = false;
+        }
     }
 
     void aimShoot()

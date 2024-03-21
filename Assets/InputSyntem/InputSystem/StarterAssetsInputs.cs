@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool shoot;
 		public bool pause;
 		public bool pickup;
+		public bool openBook;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -66,6 +67,11 @@ namespace StarterAssets
         {
             PickUpInput(value.isPressed);
         }
+		
+		public void OnBook(InputValue value)
+        {
+            BookInput(value.isPressed);
+        }
 #endif
 
 
@@ -107,6 +113,11 @@ namespace StarterAssets
         public void PickUpInput(bool newPauseState)
         {
             pickup = newPauseState;
+        }
+		
+		public void BookInput(bool newPauseState)
+        {
+            openBook = newPauseState;
         }
 
         private void OnApplicationFocus(bool hasFocus)
