@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,75 +10,60 @@ public class BukuManager : MonoBehaviour
     public GameObject[] page;
     public Button BackBT, NextBT;
 
-    int currentIndex = 0;
+    public int currentIndex = 0;
+    public int maxIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BackBT.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        PageUpdate();
+        PaperUpdate();
     }
 
-    public int CurrentIndex
+    void PageUpdate()
     {
-        get
+        maxIndex = page.Length;
+        for(int i = 0; i < page.Length; i++)
         {
-            return currentIndex;
-        }
-        set
-        {
-            if (page[currentIndex] != null)
+            if (i == currentIndex)
             {
-                GameObject activeObj = page[currentIndex];
-                activeObj.SetActive(false);
-            }
-            if(value < 0)
-            {
-                currentIndex = page.Length - 1;
-            }
-            else if (value > page.Length -1)
-            {
-                currentIndex = 0;
+                page[i].SetActive(true);
             }
             else
             {
-                currentIndex = value;
-            }
-            if (page[currentIndex] != null)
-            {
-                GameObject activeOBJ = page[currentIndex];
-                activeOBJ.SetActive(true);
+                page[i].SetActive(false);
             }
         }
     }
 
-    public void Previous(int direction)
+    void PaperUpdate()
     {
-        if(direction == 0)
-        {
-            currentIndex--;
-        }
-        if(currentIndex <= 3)
+
+    }
+
+
+    public void Previous()
+    {
+        currentIndex -= 1;
+        if(currentIndex <= maxIndex)
         {
             NextBT.gameObject.SetActive(true);
         }
-        if(currentIndex <= 0)
+        if(currentIndex == 0)
         {
             BackBT.gameObject.SetActive(false);
         }
     }
-    public void Next(int direction)
+    public void Next()
     {
-        if(direction >= 1)
-        {
-            currentIndex++;
-        }
-        if(currentIndex >= 4)
+        currentIndex += 1 ;
+        if(currentIndex == maxIndex - 1)
         {
             NextBT.gameObject.SetActive(false);
         }

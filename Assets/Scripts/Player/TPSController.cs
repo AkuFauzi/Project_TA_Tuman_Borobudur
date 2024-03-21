@@ -26,6 +26,7 @@ public class TPSController : MonoBehaviour
     public float firerate = 5f;
 
     public bool inpause;
+    public bool onbook;
 
     private void Awake()
     {
@@ -68,6 +69,11 @@ public class TPSController : MonoBehaviour
             buttonManager.SettingUI.SetActive(false);
             StarterAssetsInputs.pause = false;
         }
+    }
+
+    public void OpenBook()
+    {
+
     }
 
     void aimShoot()
