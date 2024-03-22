@@ -5638,7 +5638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1464804402}
   maxHealth: 100
-  regenHealth: 0
+  regenHealth: 10
   currentHealth: 0
 --- !u!1 &8047161636788624723
 GameObject:
