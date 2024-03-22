@@ -12,7 +12,7 @@ public class WeaponAmmo : MonoBehaviour
     private void Update()
     {
         maxAmmo = 50;
-        Mathf.Clamp(currentAmmo, 0, maxAmmo);
+        currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
         ammoText.text = currentAmmo + "/" + maxAmmo;
     }
 

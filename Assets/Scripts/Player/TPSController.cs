@@ -63,6 +63,7 @@ public class TPSController : MonoBehaviour
             Time.timeScale = 0;
             buttonManager.SettingUI.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.settingFirst);
+            playerInput.SwitchCurrentActionMap("UI");
             StarterAssetsInputs.pause = false;
         }
         else if (StarterAssetsInputs.pause && inpause == true)
@@ -71,6 +72,7 @@ public class TPSController : MonoBehaviour
             thirdPersonController.enabled = true;
             Time.timeScale = 1;
             buttonManager.SettingUI.SetActive(false);
+            playerInput.SwitchCurrentActionMap("Player");
             StarterAssetsInputs.pause = false;
         }
     }
@@ -85,7 +87,7 @@ public class TPSController : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
             StarterAssetsInputs.openBook = false;
         }
-        else if(StarterAssetsInputs.openBook && inpause == true)
+        else if(StarterAssetsInputs.openBook && onbook == true)
         {
             onbook = false;
             Time.timeScale = 1;

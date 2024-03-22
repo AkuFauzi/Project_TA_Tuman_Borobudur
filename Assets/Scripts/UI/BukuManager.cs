@@ -8,11 +8,14 @@ using UnityEngine.UI;
 public class BukuManager : MonoBehaviour
 {
     public GameObject[] paper;
+    public GameObject[] itemCollectible;
     public GameObject[] page;
     public Button BackBT, NextBT;
 
     public int currentIndex = 0;
     public int maxIndex;
+
+    public int maxPaperIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +46,37 @@ public class BukuManager : MonoBehaviour
         }
     }
 
+
     void PaperUpdate()
     {
+        maxPaperIndex = paper.Length;
+        //for(int p = 0; p < paper.Length; p++)
+        //{
+        //    for(int q = 0; q < itemCollectible.Length; q++)
+        //    {
+        //        Debug.Log("p=" + p + "q=" + q);
+        //        if (p == q && itemCollectible[q] == null)
+        //        {
+        //            paper[p].SetActive(true);
+        //        }
+        //        else
+        //        {
+        //            paper[p].SetActive(false);
+        //        }
+        //    }
 
+        //}
+        for(int q = 0; q < itemCollectible.Length; q++)
+        {
+            if (itemCollectible[q] == null)
+            {
+                paper[q].SetActive(true);
+            }
+            else
+            {
+                paper[q].SetActive(false);
+            }
+        }
     }
 
 

@@ -18,6 +18,7 @@ public class HealthBar : MonoBehaviour
     {
         maxHealth = 100;
         currentHealth = maxHealth;
+        cooldownHeal = false;
     }
 
     // Update is called once per frame
