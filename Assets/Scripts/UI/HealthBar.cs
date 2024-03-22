@@ -12,50 +12,43 @@ public class HealthBar : MonoBehaviour
 
     bool cooldown;
     bool cooldownHeal;
+    //bool cooldownHeal;
     
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
-        cooldownHeal = false;
+        //cooldownHeal = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         healthBar.value = currentHealth;
-        if(currentHealth < maxHealth && cooldownHeal == false)
+        if(currentHealth < maxHealth)
         {
-            cooldownHeal = true;
-            StartCoroutine(heal());
-            IEnumerator heal()
-            {
-                currentHealth += regenHealth;
-                yield return new WaitForSeconds(2);
-                cooldownHeal = false;
-            }
+            
         }
 
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(cooldown == false)
+        if (cooldown == false)
         {
             cooldown = true;
             StartCoroutine(delay());
             IEnumerator delay()
             {
-                if (other.gameObject.tag == "Enemy" && currentHealth != 0)
+                if (other.gameObject.tag == "enemy" && currentHealth != 0)
                 {
                     currentHealth -= 10;
                 }
                 yield return new WaitForSeconds(1);
                 cooldown = false;
             }
-            
-        }
 
+        }
     }
 }
