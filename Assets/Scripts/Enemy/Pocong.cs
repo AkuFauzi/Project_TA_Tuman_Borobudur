@@ -8,6 +8,7 @@ public class Pocong : EnemyManager
     public override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
         agent.speed = moveSpeed;
     }
@@ -32,7 +33,8 @@ public class Pocong : EnemyManager
         {
             case ENEMYBEHAVIOURS.WALK:
                 Debug.Log("Mulai");
-                agent.speed = 5;
+                agent.speed = 3;
+                animator.SetBool("Walk", true);
 
                 if(agent.remainingDistance <= agent.stoppingDistance)
                 {

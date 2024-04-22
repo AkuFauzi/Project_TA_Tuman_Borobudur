@@ -22,6 +22,12 @@ public class Tuyul : EnemyManager
     public override void Update()
     {
 
+        if(healthPoint <= 0)
+        {
+            State = ENEMYBEHAVIOURS.DEATH;
+        }
+
+        
 
 
         switch (State)
@@ -50,6 +56,8 @@ public class Tuyul : EnemyManager
             case ENEMYBEHAVIOURS.RAGE:
                 break;
             case ENEMYBEHAVIOURS.DEATH:
+                agent.speed = 0;
+                animator.SetBool("Die", true);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
                 break;
