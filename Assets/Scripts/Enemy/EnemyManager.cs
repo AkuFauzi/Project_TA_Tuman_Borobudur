@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,26 +28,18 @@ public abstract class EnemyManager : MonoBehaviour
     public Vector3 distanceToPlayer;
     public Collider head, body;
 
+    public Animator animator;
+
     public virtual void Start()
     {
         moveSpeed = agent.speed;
         acceleration = agent.acceleration;
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
-
     public virtual void Update()
     {
-        switch (State)
-        {
-            case ENEMYBEHAVIOURS.WALK:
-                if (agent != null)
-                {
-                    agent.SetDestination(RandomLocation());
-                }
-                break;
-            default:
-                break;
-        }
+
     }
 
     public virtual Vector3 RandomLocation()

@@ -9,6 +9,7 @@ public class Tuyul : EnemyManager
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
+        animator = GetComponent<Animator>();
         agent.speed = moveSpeed;
         agent.acceleration = acceleration;
 
@@ -26,15 +27,25 @@ public class Tuyul : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 100;
-                acceleration = 100;
-                agent.SetDestination(RandomLocation());
+                agent.speed = 4;
+                acceleration = 8;
+                animator.SetBool("Walk", true);
+                animator.SetBool("Chase", false);
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    agent.SetDestination(RandomLocation());
+                }
+
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 250;
+                agent.speed = 10;
+                animator.SetBool("Chase", true);
+                animator.SetBool("Walk", false);
                 agent.SetDestination(target.transform.position);
                 break;
             case ENEMYBEHAVIOURS.IDLE:
+                agent.speed = 0;
                 break;
             case ENEMYBEHAVIOURS.RAGE:
                 break;

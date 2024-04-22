@@ -45,7 +45,11 @@ public class Banaspati : EnemyManager
             case ENEMYBEHAVIOURS.WALK:
                 Debug.Log("Mulai");
                 agent.speed = 5;
-                agent.SetDestination(RandomLocation());
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    agent.SetDestination(RandomLocation());
+                }
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
