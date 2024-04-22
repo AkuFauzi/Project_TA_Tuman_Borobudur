@@ -45,7 +45,7 @@ public class Tuyul : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 10;
+                agent.speed = 5;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 agent.SetDestination(target.transform.position);
