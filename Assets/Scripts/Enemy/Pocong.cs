@@ -10,7 +10,6 @@ public class Pocong : EnemyManager
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
-        agent.speed = moveSpeed;
     }
     public override void Update()
     {

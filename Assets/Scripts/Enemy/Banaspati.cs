@@ -9,8 +9,6 @@ public class Banaspati : EnemyManager
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
-        agent.speed = agent.speed;
-        acceleration = agent.acceleration;
     }
     public override void Update()
     {

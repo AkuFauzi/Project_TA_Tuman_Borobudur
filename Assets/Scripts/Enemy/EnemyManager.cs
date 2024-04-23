@@ -17,9 +17,8 @@ public abstract class EnemyManager : MonoBehaviour
     }
     public ENEMYBEHAVIOURS State;
     public ENEMYBEHAVIOURS GetState() { return State; }
-    public float moveSpeed;
-    public float acceleration;
     public float walkRadius;
+    public float distanceToAgent;
     public int healthPoint;
     public int attackPoint;
     public GameObject target;
@@ -32,8 +31,6 @@ public abstract class EnemyManager : MonoBehaviour
 
     public virtual void Start()
     {
-        moveSpeed = agent.speed;
-        acceleration = agent.acceleration;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
