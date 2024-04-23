@@ -48,7 +48,7 @@ public class Tuyul : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 10;
+                agent.speed = 7;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 agent.SetDestination(target.transform.position);
@@ -62,6 +62,15 @@ public class Tuyul : EnemyManager
                 agent.speed = 0;
                 break;
             case ENEMYBEHAVIOURS.RAGE:
+                agent.speed = 12;
+                animator.SetBool("Chase", true);
+                animator.SetBool("Walk", false);
+                agent.SetDestination(target.transform.position);
+
+                if (distanceToAgent <= 1)
+                {
+                    State = ENEMYBEHAVIOURS.ATTACK;
+                }
                 break;
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
