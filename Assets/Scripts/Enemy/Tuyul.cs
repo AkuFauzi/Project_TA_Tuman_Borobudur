@@ -26,8 +26,9 @@ public class Tuyul : EnemyManager
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
-        else if (healthPoint <= 0)
+        if (healthPoint <= 0)
         {
+            Debug.Log("D");
             State = ENEMYBEHAVIOURS.DEATH;
         }
 

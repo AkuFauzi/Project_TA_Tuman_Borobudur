@@ -11387,9 +11387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  walkRadius: 100
+  walkRadius: 15
   distanceToAgent: 0
-  healthPoint: 100
+  healthPoint: 0
   attackPoint: 0
   target: {fileID: 0}
   agent: {fileID: 0}
@@ -16855,14 +16855,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   debugTranform: {fileID: 984341328}
-  bulletPrefab: {fileID: 5979593215730836079, guid: 4877681d485e0224ea7972f32bd115d7,
+  bulletPrefab: {fileID: 1383513109799181474, guid: 86b845c22d321ec4bbb69957abd8f35b,
     type: 3}
   spawnBulletPosition: {fileID: 838323096}
   thirdPersonController: {fileID: 0}
   mainCamera: {fileID: 5542111180509655473}
   buttonManager: {fileID: 1705838400}
   book: {fileID: 1522050947}
-  firerate: 1
+  firerate: 2
   inpause: 0
   onbook: 0
 --- !u!114 &6988459656410646219
@@ -19994,6 +19994,7 @@ GameObject:
   - component: {fileID: 8891692787963814605}
   - component: {fileID: 8891692787963814604}
   - component: {fileID: 8891692787963814603}
+  - component: {fileID: 8891692787963814608}
   m_Layer: 0
   m_Name: Pocong
   m_TagString: Untagged
@@ -20030,7 +20031,7 @@ MonoBehaviour:
   State: 0
   walkRadius: 50
   distanceToAgent: 0
-  healthPoint: 100
+  healthPoint: 0
   attackPoint: 0
   target: {fileID: 0}
   agent: {fileID: 0}
@@ -20097,6 +20098,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8891692787963814608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891692787963814602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!4 &8897560561013962481
 Transform:
   m_ObjectHideFlags: 0

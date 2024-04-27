@@ -28,6 +28,7 @@ public class Pocong : EnemyManager
         }
         else if (healthPoint <= 0)
         {
+
             State = ENEMYBEHAVIOURS.DEATH;
         }
 
@@ -74,6 +75,8 @@ public class Pocong : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
                 animator.SetBool("Die", true);
+
+  
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
                 animator.SetTrigger("Attack");
@@ -98,6 +101,14 @@ public class Pocong : EnemyManager
                 }
 
                 break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Bullet")
+        {
+            healthPoint -= 10;
         }
     }
 }

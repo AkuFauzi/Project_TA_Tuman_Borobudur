@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 50f;
+        float speed = 25f;
         bulletRB.velocity = transform.forward * speed;
     }
 
