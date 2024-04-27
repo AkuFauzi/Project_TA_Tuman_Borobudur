@@ -45,10 +45,18 @@ public class HealthBar : MonoBehaviour
                 {
                     currentHealth -= 10;
                 }
+                if (other.gameObject.tag == "AttackE" && currentHealth != 0)
+                {
+                    currentHealth -= 15;
+                }
                 yield return new WaitForSeconds(1);
                 cooldown = false;
+
+                
             }
 
         }
+
+
     }
 }

@@ -22,7 +22,7 @@ public class Tuyul : EnemyManager
         distanceToPlayer = target.transform.position - agent.transform.position;
         distanceToAgent = distanceToPlayer.magnitude;
 
-        if(healthPoint <= 50)
+        if (healthPoint <= 50)
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
@@ -31,13 +31,13 @@ public class Tuyul : EnemyManager
             State = ENEMYBEHAVIOURS.DEATH;
         }
 
-        
+
 
 
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 4;
+                agent.speed = 3.8f;
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 
@@ -51,18 +51,22 @@ public class Tuyul : EnemyManager
                 agent.speed = 7;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
-                agent.SetDestination(target.transform.position);
 
-                if (distanceToAgent <= 1)
+                if (distanceToAgent <= 2)
                 {
+                    agent.stoppingDistance = 1f;
                     State = ENEMYBEHAVIOURS.ATTACK;
+                }
+                else
+                {
+                    agent.SetDestination(target.transform.position);
                 }
                 break;
             case ENEMYBEHAVIOURS.IDLE:
                 agent.speed = 0;
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 12;
+                agent.speed = 10;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 agent.SetDestination(target.transform.position);
@@ -80,13 +84,20 @@ public class Tuyul : EnemyManager
                 animator.SetBool("Chase", false);
                 animator.SetTrigger("Attack");
 
+                Vector3 attackDirwolrd = target.transform.position;
+                attackDirwolrd.y = transform.position.y;
 
-                if(distanceToAgent >= 1)
+                Vector3 attackDir = (attackDirwolrd - transform.position).normalized;
+
+                transform.forward = Vector3.Lerp(transform.forward, attackDir, Time.deltaTime);
+
+
+                if (distanceToAgent >= 4)
                 {
                     State = ENEMYBEHAVIOURS.CHASE;
                     animator.SetBool("Chase", true);
                 }
-                else if (distanceToAgent >= 1 && healthPoint <= 50)
+                else if (distanceToAgent >= 4 && healthPoint <= 50)
                 {
                     State = ENEMYBEHAVIOURS.RAGE;
                     animator.SetBool("Chase", true);

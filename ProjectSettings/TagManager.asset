@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - CameraAim
   - Enemy
+  - AttackE
   layers:
   - Default
   - TransparentFX

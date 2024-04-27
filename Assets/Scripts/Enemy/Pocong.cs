@@ -15,7 +15,6 @@ public class Pocong : EnemyManager
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= 5)
         {
-            Debug.Log("Jalan");
             State = ENEMYBEHAVIOURS.WALK;
             
         }
@@ -31,7 +30,6 @@ public class Pocong : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                Debug.Log("Mulai");
                 agent.speed = 3;
                 animator.SetBool("Walk", true);
 
@@ -42,7 +40,6 @@ public class Pocong : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                Debug.Log("Kejar");
                 agent.speed = 20;
                 agent.SetDestination(target.transform.position);
                 break;
