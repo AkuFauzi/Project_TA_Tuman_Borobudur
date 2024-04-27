@@ -8,62 +8,96 @@ public class Pocong : EnemyManager
     public override void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player");
-    }
-    public override void Update()
-    {
-        if (Vector3.Distance(transform.position, target.transform.position) <= 5)
+
+        if (agent != null)
         {
             State = ENEMYBEHAVIOURS.WALK;
-            
         }
-        /*int randomenum = Random.Range(0, 5);
-        switch (randomenum)
+    }
+
+    public override void Update()
+    {
+        distanceToPlayer = target.transform.position - agent.transform.position;
+        distanceToAgent = distanceToPlayer.magnitude;
+
+        if (healthPoint <= 50)
         {
-            case 0: State = ENEMYBEHAVIOURS.WALK; break; 
-            case 1: State = ENEMYBEHAVIOURS.CHASE; break; 
-            case 2: State = ENEMYBEHAVIOURS.IDLE; break; 
-            case 3: State = ENEMYBEHAVIOURS.RAGE; break; 
-            case 4: State = ENEMYBEHAVIOURS.DEATH; break; 
-        }*/
+            State = ENEMYBEHAVIOURS.RAGE;
+        }
+        else if (healthPoint <= 0)
+        {
+            State = ENEMYBEHAVIOURS.DEATH;
+        }
+
+
+
+
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 3;
+                agent.speed = 2.5f;
                 animator.SetBool("Walk", true);
 
-                if(agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     agent.SetDestination(RandomLocation());
                 }
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 20;
-                agent.SetDestination(target.transform.position);
+
+                if (distanceToAgent <= 2)
+                {
+                    agent.stoppingDistance = 1f;
+                    State = ENEMYBEHAVIOURS.ATTACK;
+                }
+                else
+                {
+                    agent.SetDestination(target.transform.position);
+                }
                 break;
             case ENEMYBEHAVIOURS.IDLE:
+                agent.speed = 0;
                 break;
             case ENEMYBEHAVIOURS.RAGE:
+                agent.speed = 4;
+                agent.SetDestination(target.transform.position);
+
+                if (distanceToAgent <= 2)
+                {
+                    agent.stoppingDistance = 1f;
+                    State = ENEMYBEHAVIOURS.ATTACK;
+                }
                 break;
             case ENEMYBEHAVIOURS.DEATH:
+                agent.speed = 0;
+                animator.SetBool("Die", true);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
+                animator.SetTrigger("Attack");
+
+                Vector3 attackDirwolrd = target.transform.position;
+                attackDirwolrd.y = transform.position.y;
+
+                Vector3 attackDir = (attackDirwolrd - transform.position).normalized;
+
+                transform.forward = Vector3.Lerp(transform.forward, attackDir, Time.deltaTime);
+
+
+                if (distanceToAgent >= 4)
+                {
+                    State = ENEMYBEHAVIOURS.CHASE;
+                    animator.SetBool("Walk", true);
+                }
+                else if (distanceToAgent >= 4 && healthPoint <= 50)
+                {
+                    State = ENEMYBEHAVIOURS.RAGE;
+                    animator.SetBool("Walk", true);
+                }
+
                 break;
-        }
-    }
-
-
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            healthPoint -= 10;
-            Debug.Log("Kena");
-            State = ENEMYBEHAVIOURS.CHASE;
         }
     }
 }
