@@ -135,7 +135,7 @@ public class TPSController : MonoBehaviour
                 noAimShootDIr.y = transform.position.y;
                 Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
 
-                transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10000);
+                transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10);
 
                 if (cooldown == false
                     && mainCamera.transform.eulerAngles.y <= transform.eulerAngles.y + 10
