@@ -26,8 +26,10 @@ public abstract class EnemyManager : MonoBehaviour
     public HealthBar healthBar;
     public Vector3 distanceToPlayer;
     public Collider head, body;
-
+    public Rigidbody rigidbody;
     public Animator animator;
+
+    public bool cdState;
 
     public virtual void Start()
     {

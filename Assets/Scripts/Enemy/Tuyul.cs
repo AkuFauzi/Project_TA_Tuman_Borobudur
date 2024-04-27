@@ -10,6 +10,7 @@ public class Tuyul : EnemyManager
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
 
         if (agent != null)
         {
@@ -21,6 +22,8 @@ public class Tuyul : EnemyManager
     {
         distanceToPlayer = target.transform.position - agent.transform.position;
         distanceToAgent = distanceToPlayer.magnitude;
+
+        rigidbody.velocity = Vector3.zero;
 
         if (healthPoint <= 50)
         {

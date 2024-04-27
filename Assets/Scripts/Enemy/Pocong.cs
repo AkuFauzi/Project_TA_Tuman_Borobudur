@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,7 @@ public class Pocong : EnemyManager
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
 
         if (agent != null)
         {
@@ -21,6 +23,8 @@ public class Pocong : EnemyManager
     {
         distanceToPlayer = target.transform.position - agent.transform.position;
         distanceToAgent = distanceToPlayer.magnitude;
+
+        rigidbody.velocity = Vector3.zero;
 
         if (healthPoint <= 50)
         {
@@ -41,10 +45,36 @@ public class Pocong : EnemyManager
                 agent.speed = 2.5f;
                 animator.SetBool("Walk", true);
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= 1)
                 {
-                    agent.SetDestination(RandomLocation());
+                    if (cdState) return;
+                    bool isIdle = false;
+                    
+                    int rnd = Random.RandomRange(0, 2);
+                    if (rnd == 1) isIdle = true;
+                    if (isIdle)
+                    {
+                        Debug.Log("O");
+                        StartCoroutine(delay());
+                        IEnumerator delay()
+                        {
+                            State = ENEMYBEHAVIOURS.IDLE;
+                            cdState = true;
+                            yield return new WaitForSeconds(Random.RandomRange(3,5));
+                            State = ENEMYBEHAVIOURS.WALK;
+                            cdState = false;
+                        }
+                    }
+                    else
+                    {
+                        agent.SetDestination(RandomLocation());
+                    }
+                    
                 }
+
+                
+
+                
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:

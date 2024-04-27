@@ -9,15 +9,13 @@ public class Banaspati : EnemyManager
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
+        rigidbody = GetComponent<Rigidbody>();
+
     }
     public override void Update()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) <= 5)
-        {
-            Debug.Log("Serang");
-            State = ENEMYBEHAVIOURS.ATTACK;
-            
-        }
+        distanceToPlayer = target.transform.position - agent.transform.position;
+        distanceToAgent = distanceToPlayer.magnitude;
 
         if (healthPoint <= 25)
         {
@@ -29,19 +27,9 @@ public class Banaspati : EnemyManager
         }
 
 
-        /*int randomenum = Random.Range(0, 5);
-        switch (randomenum)
-        {
-            case 0: State = ENEMYBEHAVIOURS.WALK; break; 
-            case 1: State = ENEMYBEHAVIOURS.CHASE; break; 
-            case 2: State = ENEMYBEHAVIOURS.IDLE; break; 
-            case 3: State = ENEMYBEHAVIOURS.RAGE; break; 
-            case 4: State = ENEMYBEHAVIOURS.DEATH; break; 
-        }*/
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                Debug.Log("Mulai");
                 agent.speed = 5;
 
                 if (agent.remainingDistance <= agent.stoppingDistance)
@@ -51,7 +39,6 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                Debug.Log("Kejar");
                 agent.speed = 20;
                 agent.SetDestination(target.transform.position);
 
@@ -61,15 +48,24 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                Debug.Log("Marah");
-                agent.speed = 150;
-                //gameObject.transform.GetChild(0).transform.Translate(target.transform.position * Time.deltaTime);
+                agent.speed = 15;
+                rigidbody.velocity = Vector3.zero;
+                Transform child = gameObject.transform.GetChild(0).transform;
+                child.position = Vector3.MoveTowards(transform.position, Vector3.zero, 1 *Time.deltaTime);
+                //agent.enabled = false;
+                //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, agent.speed *Time.deltaTime);
+                if(distanceToAgent <= 2)
+                {
+                    agent.stoppingDistance = 1f;
+                    agent.velocity = Vector3.zero;
+                    return;
+                }
                 agent.SetDestination(target.transform.position);
 
 
                 break;
             case ENEMYBEHAVIOURS.DEATH:
-
+                Debug.Log("L");
 
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
