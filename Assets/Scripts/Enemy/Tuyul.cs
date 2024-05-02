@@ -24,17 +24,16 @@ public class Tuyul : EnemyManager
         distanceToAgent = distanceToPlayer.magnitude;
 
         rigidbody.velocity = Vector3.zero;
-
-        if (healthPoint <= 50)
-        {
-            State = ENEMYBEHAVIOURS.RAGE;
-        }
         if (healthPoint <= 0)
         {
             Debug.Log("D");
             State = ENEMYBEHAVIOURS.DEATH;
         }
-
+        else if (healthPoint <= 50)
+        {
+            State = ENEMYBEHAVIOURS.RAGE;
+        }
+        
 
 
 

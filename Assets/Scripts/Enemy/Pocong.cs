@@ -25,15 +25,14 @@ public class Pocong : EnemyManager
         distanceToAgent = distanceToPlayer.magnitude;
 
         rigidbody.velocity = Vector3.zero;
-
-        if (healthPoint <= 50)
-        {
-            State = ENEMYBEHAVIOURS.RAGE;
-        }
-        else if (healthPoint <= 0)
+        if (healthPoint <= 0)
         {
 
             State = ENEMYBEHAVIOURS.DEATH;
+        }
+        else if (healthPoint <= 50)
+        {
+            State = ENEMYBEHAVIOURS.RAGE;
         }
 
 
