@@ -138,7 +138,7 @@ public class TPSController : MonoBehaviour
                 noAimShootDIr.y = transform.position.y;
                 Vector3 shootDir = (noAimShootDIr - transform.position).normalized;
 
-                transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 10);
+                transform.forward = Vector3.Lerp(transform.forward, shootDir, Time.deltaTime * 1000);
 
                 if (cooldown == false
                     && mainCamera.transform.eulerAngles.y <= transform.eulerAngles.y + 10
@@ -148,10 +148,11 @@ public class TPSController : MonoBehaviour
                     StartCoroutine(delay());
                     IEnumerator delay()
                     {
-
+                        thirdPersonController._animator.SetBool("Shoot", true);
                         Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
                         weaponAmmo.currentAmmo = weaponAmmo.currentAmmo - 1;
                         yield return new WaitForSeconds(1 / firerate);
+                        thirdPersonController._animator.SetBool("Shoot", false);
                         cooldown = false;
                     }
                 }
