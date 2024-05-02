@@ -9,11 +9,12 @@ TagManager:
   - CameraAim
   - Enemy
   - AttackE
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

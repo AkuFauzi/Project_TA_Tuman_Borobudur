@@ -101,6 +101,10 @@ public class Pocong : EnemyManager
                     agent.stoppingDistance = 1f;
                     State = ENEMYBEHAVIOURS.ATTACK;
                 }
+                if(healthPoint == 0)
+                {
+                    State = ENEMYBEHAVIOURS.DEATH;
+                }
                 break;
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
