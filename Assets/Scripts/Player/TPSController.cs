@@ -114,6 +114,8 @@ public class TPSController : MonoBehaviour
             aimVCam.gameObject.SetActive(true);
             thirdPersonController.rotate = false;
 
+            thirdPersonController._animator.SetBool("Aim", true);
+
             Vector3 worldAimTarget = mouseWorldPosition;
             worldAimTarget.y = transform.position.y;
             Vector3 aimDir = (worldAimTarget - transform.position).normalized;
@@ -123,6 +125,7 @@ public class TPSController : MonoBehaviour
         else
         {
             aimVCam.gameObject.SetActive(false);
+            thirdPersonController._animator.SetBool("Aim", false);
             thirdPersonController.rotate = true;
         }
 

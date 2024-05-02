@@ -24656,6 +24656,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  _animator: {fileID: 0}
   rotate: 1
 --- !u!114 &5220485639248728076
 MonoBehaviour:
@@ -29117,6 +29118,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  _animator: {fileID: 0}
   rotate: 0
 --- !u!143 &6341998658663564313
 CharacterController:
