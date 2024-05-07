@@ -110,14 +110,14 @@ namespace StarterAssets
 			pause = newPauseState;
 		}
 
-        public void PickUpInput(bool newPauseState)
+        public void PickUpInput(bool newPickUpState)
         {
-            pickup = newPauseState;
+            pickup = newPickUpState;
         }
 		
-		public void BookInput(bool newPauseState)
+		public void BookInput(bool newBookState)
         {
-            openBook = newPauseState;
+            openBook = newBookState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

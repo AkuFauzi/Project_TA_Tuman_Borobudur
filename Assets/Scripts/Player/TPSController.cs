@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using UnityEngine.WSA;
 
 public class TPSController : MonoBehaviour
 {
@@ -86,6 +87,8 @@ public class TPSController : MonoBehaviour
             book.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
             StarterAssetsInputs.openBook = false;
+            StarterAssetsInputs.cursorLocked = false;
+            StarterAssetsInputs.cursorInputForLook = false;
         }
         else if(StarterAssetsInputs.openBook && onbook == true)
         {
@@ -93,6 +96,8 @@ public class TPSController : MonoBehaviour
             Time.timeScale = 1;
             book.SetActive(false);
             StarterAssetsInputs.openBook = false;
+            
+            StarterAssetsInputs.cursorInputForLook = true;
         }
     }
 
