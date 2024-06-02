@@ -109,4 +109,11 @@ public class Tuyul : EnemyManager
                 break;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            healthPoint -= 10;
+        }
+    }
 }

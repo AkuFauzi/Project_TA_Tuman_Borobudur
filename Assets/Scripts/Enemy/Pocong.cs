@@ -78,6 +78,7 @@ public class Pocong : EnemyManager
                 break;
             case ENEMYBEHAVIOURS.CHASE:
 
+                animator.SetBool("Walk", true);
                 if (distanceToAgent <= 2)
                 {
                     agent.stoppingDistance = 1f;
@@ -90,9 +91,11 @@ public class Pocong : EnemyManager
                 break;
             case ENEMYBEHAVIOURS.IDLE:
                 agent.speed = 0;
+                animator.SetBool("Walk", false);
                 break;
             case ENEMYBEHAVIOURS.RAGE:
                 agent.speed = 4;
+                animator.SetBool("Walk", true);
                 agent.SetDestination(target.transform.position);
 
                 if (distanceToAgent <= 2)
