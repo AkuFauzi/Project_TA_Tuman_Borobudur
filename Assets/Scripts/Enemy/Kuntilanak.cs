@@ -106,6 +106,7 @@ public class Kuntilanak : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
                 animator.SetBool("Die", true);
+                Destroy(gameObject, 10);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
                 animator.SetBool("Chase", false);
