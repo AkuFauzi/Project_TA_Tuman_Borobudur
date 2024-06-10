@@ -7,27 +7,33 @@ public class QuestManager : MonoBehaviour
 {
     public TextMeshProUGUI questText;
     public BukuManager bukuManager;
+    public GameObject losePanel;
+    public HealthBar healthBar;
     public GameObject[] obstacle;
     public GameObject[] timeLine;
     public GameObject[] spwaners;
+
+    [TextArea(3, 10)]
+    public string[] isiText;
 
     public int totalItem;
     public int itemCount;
 
     private void Start()
     {
-        bukuManager = GetComponent<BukuManager>();
+        losePanel.SetActive(false);
     }
 
     private void Update()
     {
         QuestUpdate();
+        LoseCondition();
     }
 
     void QuestUpdate()
     {
         totalItem = itemCount;
-        questText.text = "Jumlah Item Didapat " + itemCount+"/4";
+        questText.text = isiText[0] + itemCount+"/4";
         if (totalItem >= 4)
         {
             timeLine[0].SetActive(true);
@@ -41,11 +47,16 @@ public class QuestManager : MonoBehaviour
             {
                 spwaners[i].SetActive(true);
             }
-            else
-            {
-                spwaners[i].SetActive(false);
-            }
         }
         
+    }
+
+    void LoseCondition()
+    {
+        if(healthBar.currentHealth <= 0)
+        {
+            losePanel.SetActive(true);
+            Debug.Log("Lose");
+        }
     }
 }
