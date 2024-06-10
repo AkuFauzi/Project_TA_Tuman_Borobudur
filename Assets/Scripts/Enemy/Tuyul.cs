@@ -44,9 +44,31 @@ public class Tuyul : EnemyManager
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= 1)
                 {
-                    agent.SetDestination(RandomLocation());
+                    if (cdState) return;
+                    bool isIdle = false;
+
+                    int rnd = Random.RandomRange(0, 2);
+                    if (rnd == 1) isIdle = true;
+                    if (isIdle)
+                    {
+                        Debug.Log("O");
+                        StartCoroutine(delay());
+                        IEnumerator delay()
+                        {
+                            State = ENEMYBEHAVIOURS.IDLE;
+                            cdState = true;
+                            yield return new WaitForSeconds(Random.RandomRange(3, 5));
+                            State = ENEMYBEHAVIOURS.WALK;
+                            cdState = false;
+                        }
+                    }
+                    else
+                    {
+                        agent.SetDestination(RandomLocation());
+                    }
+
                 }
 
                 break;
@@ -67,6 +89,8 @@ public class Tuyul : EnemyManager
                 break;
             case ENEMYBEHAVIOURS.IDLE:
                 agent.speed = 0;
+                animator.SetBool("Chase", false);
+                animator.SetBool("Walk", false);
                 break;
             case ENEMYBEHAVIOURS.RAGE:
                 agent.speed = 10;
