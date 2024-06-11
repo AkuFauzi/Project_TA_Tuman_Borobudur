@@ -38,7 +38,7 @@ public class QuestManager : MonoBehaviour
         {
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
-            questText.text = "jjj";
+
         }
 
         for (int i = 0; i < bukuManager.itemCollectible.Length; i++)
