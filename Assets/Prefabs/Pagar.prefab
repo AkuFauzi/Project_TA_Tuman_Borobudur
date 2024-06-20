@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6831203768538143104}
   - component: {fileID: 7593794886081025573}
   - component: {fileID: 5658319378682831599}
-  - component: {fileID: 7819991964903669705}
+  - component: {fileID: 3370981159329722930}
   m_Layer: 0
   m_Name: Pagar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6831203768538143104
 Transform:
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7819991964903669705
+--- !u!65 &3370981159329722930
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.17021556, y: 2.4960139, z: 3.2794971}
-  m_Center: {x: 0.015557982, y: 1.1728989, z: -1.5856853}
+  m_Size: {x: 0.17021556, y: 2.7690048, z: 3.2794971}
+  m_Center: {x: 0.015557982, y: 1.3093944, z: -1.5856853}

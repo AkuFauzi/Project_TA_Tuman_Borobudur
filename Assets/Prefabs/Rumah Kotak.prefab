@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7305151278083089234}
   - component: {fileID: 5966926421437525239}
   - component: {fileID: 8442614047227893821}
+  - component: {fileID: 5347722460293104730}
   m_Layer: 0
   m_Name: Rumah Kotak
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5347722460293104730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938382480645716456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.851939, y: 6.524014, z: 7.112882}
+  m_Center: {x: -0.12613821, y: 3.1905415, z: -1.2202384}

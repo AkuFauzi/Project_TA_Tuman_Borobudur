@@ -8,10 +8,12 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questText;
     public BukuManager bukuManager;
     public GameObject losePanel;
+    public GameObject lighting;
     public HealthBar healthBar;
     public GameObject[] obstacle;
     public GameObject[] timeLine;
     public GameObject[] spwaners;
+  
 
     [TextArea(3, 10)]
     public string[] isiText;
@@ -22,6 +24,7 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         losePanel.SetActive(false);
+        lighting.SetActive(false);
     }
 
     private void Update()
@@ -38,6 +41,7 @@ public class QuestManager : MonoBehaviour
         {
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
+            lighting.SetActive(true);
 
         }
 

@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         int rnd = Random.Range(0, enemy.Length);
         totalSpawn = Mathf.Clamp(totalSpawn, 0, maxSpawn);
-        if (spawn == false)
+        if (spawn == false && totalSpawn != maxSpawn)
         {
             spawn = true;
             StartCoroutine(delay());

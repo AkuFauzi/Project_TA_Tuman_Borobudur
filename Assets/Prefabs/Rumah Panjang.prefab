@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4337724766725932997}
   - component: {fileID: 836941809284417632}
   - component: {fileID: 3204765704582790314}
+  - component: {fileID: 5554433657133395923}
   m_Layer: 0
   m_Name: Rumah Panjang
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5554433657133395923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997332925554974079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.024701, y: 6.5262113, z: 7.203948}
+  m_Center: {x: -0.49858904, y: 3.2240345, z: -0.8165345}

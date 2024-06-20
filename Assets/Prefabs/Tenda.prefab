@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2168181086760967829}
   - component: {fileID: 3006494290207871280}
   - component: {fileID: 1035196697195865594}
+  - component: {fileID: 6969991245446513747}
   m_Layer: 0
   m_Name: Tenda
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6969991245446513747
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539454376709178415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7807538432633192378, guid: 42feedc90b9c6bf43a750195ab59c192, type: 3}

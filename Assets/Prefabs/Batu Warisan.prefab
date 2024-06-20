@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 849096852117373481}
   - component: {fileID: 4352520698981567884}
   - component: {fileID: 1982628141071612230}
+  - component: {fileID: 7514080052508642422}
   m_Layer: 0
   m_Name: Batu Warisan
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7514080052508642422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36954285177280659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6714978, y: 1.3552266, z: 0.46922663}
+  m_Center: {x: 0.000009536743, y: 0.6679165, z: -0.008062884}
