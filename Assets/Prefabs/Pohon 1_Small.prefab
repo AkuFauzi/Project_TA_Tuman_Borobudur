@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4555758887214195232}
   - component: {fileID: 1791792580781659882}
   - component: {fileID: 6227283968696715259}
+  - component: {fileID: 3925157118096149773}
   m_Layer: 0
   m_Name: Pohon 1_Small
   m_TagString: Untagged
@@ -104,3 +105,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1791792580781659882}
   m_Enabled: 1
+--- !u!65 &3925157118096149773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278455356299179839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1.7872714, z: 0.3}
+  m_Center: {x: 0.004304573, y: 0.7415167, z: 0}

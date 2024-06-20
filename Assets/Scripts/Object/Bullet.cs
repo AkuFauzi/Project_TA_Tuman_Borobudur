@@ -23,6 +23,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         hit.SetActive(true);
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.1f);
     }
 }
