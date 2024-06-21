@@ -21,6 +21,18 @@ public class BukuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < paper.Length; i++)
+        {
+            if (SaveManager.Local.buku[i])
+            {
+                page[i].SetActive(true);
+            }
+            else
+            {
+                page[i].SetActive(false);
+            }
+        }
+        
         BackBT.gameObject.SetActive(false);
     }
 
@@ -55,6 +67,7 @@ public class BukuManager : MonoBehaviour
         {
             if (itemCollectible[q] == null)
             {
+                SaveManager.Local.buku[q] = true;
                 paper[q].SetActive(true);
             }
             else

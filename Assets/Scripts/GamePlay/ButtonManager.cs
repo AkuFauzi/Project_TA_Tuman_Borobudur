@@ -10,6 +10,8 @@ public class ButtonManager : MonoBehaviour
 
     [Header("Button pertama")]
     public GameObject mainMenuIFirst;
+    public GameObject winPanelFirst;
+    public GameObject losePaneFirst;
     public GameObject settingFirst;
     public GameObject NextBookBT;
 
@@ -19,6 +21,8 @@ public class ButtonManager : MonoBehaviour
     {
         SettingUI.SetActive(false);
         setting = false;
+
+        SaveManager.Initialize();
     }
 
     public void SettingMainMenu()

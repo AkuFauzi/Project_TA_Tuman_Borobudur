@@ -1,6 +1,8 @@
-﻿ using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -152,6 +154,23 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            LoadPlayerPosition();
+            StartCoroutine(savePlayerPosition());
+        }
+
+        void LoadPlayerPosition()
+        {
+            _controller.enabled = false;
+            transform.position = SaveManager.Local.playerPosition;
+            _controller.enabled = true;
+        }
+        IEnumerator savePlayerPosition()
+        {
+            yield return new WaitForSeconds(1);
+            SaveManager.Local.playerPosition = transform.position;
+            yield return savePlayerPosition();
+
         }
 
         private void Update()

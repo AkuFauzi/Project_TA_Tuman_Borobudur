@@ -9,6 +9,11 @@ public class WeaponAmmo : MonoBehaviour
     public int maxAmmo;
     public int currentAmmo;
 
+    private void Start()
+    {
+        currentAmmo = SaveManager.Local.currentAmmo;
+    }
+
     private void Update()
     {
         maxAmmo = 50;

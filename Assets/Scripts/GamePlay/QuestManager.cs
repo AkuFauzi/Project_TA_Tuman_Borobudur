@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class QuestManager : MonoBehaviour
 {
     public TextMeshProUGUI questText;
+    public ButtonManager buttonManager;
     public BukuManager bukuManager;
     public GameObject losePanel;
+    public GameObject winPanel;
     public GameObject lighting;
     public HealthBar healthBar;
+    public Kuntilanak bossKunti;
     public GameObject[] obstacle;
     public GameObject[] timeLine;
     public GameObject[] spwaners;
-  
+    
 
     [TextArea(3, 10)]
     public string[] isiText;
@@ -24,12 +28,14 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         losePanel.SetActive(false);
+        winPanel.SetActive(false);
         lighting.SetActive(false);
     }
 
     private void Update()
     {
         QuestUpdate();
+        WinCondition();
         LoseCondition();
     }
 
@@ -60,7 +66,22 @@ public class QuestManager : MonoBehaviour
         if(healthBar.currentHealth <= 0)
         {
             losePanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
             Debug.Log("Lose");
         }
+    }
+    void WinCondition()
+    {
+        if(bossKunti.healthPoint <= 0)
+        {
+            winPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
+            Debug.Log("Win");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

@@ -33,6 +33,8 @@ public class TPSController : MonoBehaviour
 
     private void Awake()
     {
+        
+
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
         weaponAmmo = GetComponent<WeaponAmmo>();
@@ -156,6 +158,9 @@ public class TPSController : MonoBehaviour
                         thirdPersonController._animator.SetBool("Shoot", true);
                         Instantiate(bulletPrefab, spawnBulletPosition.position, Quaternion.LookRotation(bulletDir, Vector3.up));
                         weaponAmmo.currentAmmo = weaponAmmo.currentAmmo - 1;
+
+                        SaveManager.Local.currentAmmo = weaponAmmo.currentAmmo;
+
                         yield return new WaitForSeconds(1 / firerate);
                         thirdPersonController._animator.SetBool("Shoot", false);
                         cooldown = false;

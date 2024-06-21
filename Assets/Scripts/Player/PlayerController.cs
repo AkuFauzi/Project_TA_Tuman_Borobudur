@@ -33,6 +33,23 @@ public class PlayerController : MonoBehaviour
         MyCamera = GameObject.FindGameObjectWithTag("MainCamera");
         input = GetComponent<StarterAssetsInputs>();
         playerInput = GetComponent<PlayerInput>();
+
+        LoadPlayerPosition();
+        StartCoroutine(savePlayerPosition());
+    }
+
+
+    void LoadPlayerPosition()
+    {
+        myController.enabled = false;
+        transform.position = SaveManager.Local.playerPosition;
+        myController.enabled = true;
+    }
+    IEnumerator savePlayerPosition()
+    {
+        yield return new  WaitForSeconds(120);
+        SaveManager.Local.playerPosition = transform.position;
+        savePlayerPosition();
     }
 
     // Update is called once per frame

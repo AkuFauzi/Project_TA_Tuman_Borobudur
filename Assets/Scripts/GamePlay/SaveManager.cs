@@ -1,18 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class SaveManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private const string _nameFile = "GameData";
+    public static LocalColletion Local;
+    public static void Initialize()
     {
-        
+        Application.quitting += SaveData;
+        LoadData();
+    }
+    private static void LoadData()
+    {
+        string _filePath = Application.persistentDataPath + $"/{_nameFile}.jhon";
+       
+
+        if (File.Exists(_filePath))
+        {
+            string _data = File.ReadAllText(_filePath);
+            Local = JsonUtility.FromJson<LocalColletion>(_data);
+        }
+        else
+        {
+            Local = new LocalColletion();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private static void SaveData()
     {
-        
+        string _filePath = Application.persistentDataPath + $"/{_nameFile}.jhon";
+        string _data = JsonUtility.ToJson(Local);
+        File.WriteAllText(_filePath, _data);
+    }
+
+    public class LocalColletion
+    {
+        public int currentAmmo = 50;
+        public bool[] buku = new bool[8];
+        public Vector3 playerPosition = new Vector3(4.5f, 8, 226);
+        public LocalColletion() { }
     }
 }
