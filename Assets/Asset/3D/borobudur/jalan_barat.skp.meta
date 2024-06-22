@@ -34,7 +34,10 @@ SketchUpImporter:
     clipAnimations: []
     isReadable: 0
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.5
+    - 0.25
+    - 0.01
     globalScale: 0.0254
     meshCompression: 3
     addColliders: 0
@@ -109,5 +112,5 @@ SketchUpImporter:
   selectedNodes: 000000000300000004000000
   assetHash:
     serializedVersion: 2
-    Hash: 9a3429d072e8be663f1967ab45037aa7
+    Hash: d5657495fb662f6ac25d6e55cc038175
   fileUnit: 0
