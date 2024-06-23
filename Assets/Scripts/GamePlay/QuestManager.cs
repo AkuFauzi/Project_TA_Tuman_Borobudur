@@ -32,6 +32,8 @@ public class QuestManager : MonoBehaviour
         losePanel.SetActive(false);
         winPanel.SetActive(false);
         lighting.SetActive(false);
+
+        itemCount = SaveManager.Local.itemCount;
     }
 
     private void Update()
@@ -50,12 +52,17 @@ public class QuestManager : MonoBehaviour
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
             lighting.SetActive(true);
-
+            questText.text = isiText[1] + itemCount+"/4";
+        }
+        else if (totalItem >= 8)
+        {
+            obstacle[1].SetActive(false);
+            questText.text = isiText[2];
         }
 
         for (int i = 0; i < bukuManager.itemCollectible.Length; i++)
         {
-            if (bukuManager.itemCollectible[i] = null)
+            if (bukuManager.itemCollectible[i] == null)
             {
                 spwaners[i].SetActive(true);
             }
@@ -63,7 +70,7 @@ public class QuestManager : MonoBehaviour
         
     }
 
-    void LoseCondition()
+    public void LoseCondition()
     {
         if(healthBar.currentHealth <= 0)
         {
@@ -74,7 +81,7 @@ public class QuestManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
         }
     }
-    void WinCondition()
+    public void WinCondition()
     {
         if(bossKunti.healthPoint <= 0)
         {
