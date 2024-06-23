@@ -25,7 +25,7 @@ public class Kuntilanak : EnemyManager
 
         rigidbody.velocity = Vector3.zero;
 
-        if (distanceToAgent < 50)
+        if (distanceToAgent < 10)
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
