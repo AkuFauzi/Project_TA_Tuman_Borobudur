@@ -25,7 +25,7 @@ public class Kuntilanak : EnemyManager
 
         rigidbody.velocity = Vector3.zero;
 
-        if (distanceToAgent < 10)
+        if (distanceToAgent < 10 && State != ENEMYBEHAVIOURS.CHASE && State != ENEMYBEHAVIOURS.ATTACK)
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
@@ -134,6 +134,8 @@ public class Kuntilanak : EnemyManager
                     State = ENEMYBEHAVIOURS.RAGE;
                 }
 
+                break;
+            default:
                 break;
         }
     }

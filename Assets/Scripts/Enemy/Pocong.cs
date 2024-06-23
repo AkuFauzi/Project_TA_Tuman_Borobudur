@@ -26,7 +26,7 @@ public class Pocong : EnemyManager
 
         rigidbody.velocity = Vector3.zero;
 
-        if (distanceToAgent < 10)
+        if (distanceToAgent < 10 && State != ENEMYBEHAVIOURS.CHASE && State != ENEMYBEHAVIOURS.ATTACK)
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
@@ -54,7 +54,7 @@ public class Pocong : EnemyManager
                 {
                     if (cdState) return;
                     bool isIdle = false;
-                    
+
                     int rnd = Random.RandomRange(0, 2);
                     if (rnd == 1) isIdle = true;
                     if (isIdle)
@@ -64,7 +64,7 @@ public class Pocong : EnemyManager
                         {
                             State = ENEMYBEHAVIOURS.IDLE;
                             cdState = true;
-                            yield return new WaitForSeconds(Random.RandomRange(3,5));
+                            yield return new WaitForSeconds(Random.RandomRange(3, 5));
                             State = ENEMYBEHAVIOURS.WALK;
                             cdState = false;
                         }
@@ -73,12 +73,12 @@ public class Pocong : EnemyManager
                     {
                         agent.SetDestination(RandomLocation());
                     }
-                    
+
                 }
 
-                
 
-                
+
+
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
@@ -108,7 +108,7 @@ public class Pocong : EnemyManager
                     agent.stoppingDistance = 1f;
                     State = ENEMYBEHAVIOURS.ATTACK;
                 }
-                if(healthPoint == 0)
+                if (healthPoint == 0)
                 {
                     State = ENEMYBEHAVIOURS.DEATH;
                 }
@@ -117,9 +117,12 @@ public class Pocong : EnemyManager
                 agent.speed = 0;
                 animator.SetBool("Die", true);
 
-  
+
+
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
+                Debug.Log("Attack");
+                animator.SetBool("Walk", false);
                 animator.SetTrigger("Attack");
 
                 Vector3 attackDirwolrd = target.transform.position;
@@ -129,9 +132,9 @@ public class Pocong : EnemyManager
 
                 transform.forward = Vector3.Lerp(transform.forward, attackDir, Time.deltaTime);
 
-
                 if (distanceToAgent >= 4)
                 {
+                    Debug.Log("distanceToAgent");
                     State = ENEMYBEHAVIOURS.CHASE;
                     animator.SetBool("Walk", true);
                 }
@@ -141,6 +144,8 @@ public class Pocong : EnemyManager
                     animator.SetBool("Walk", true);
                 }
 
+                break;
+            default:
                 break;
         }
     }

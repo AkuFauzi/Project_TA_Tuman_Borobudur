@@ -25,7 +25,7 @@ public class Tuyul : EnemyManager
 
         rigidbody.velocity = Vector3.zero;
 
-        if(distanceToAgent < 10)
+        if (distanceToAgent < 10 && State != ENEMYBEHAVIOURS.CHASE && State != ENEMYBEHAVIOURS.ATTACK)
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
@@ -40,7 +40,7 @@ public class Tuyul : EnemyManager
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
-        
+
 
 
 
@@ -136,6 +136,8 @@ public class Tuyul : EnemyManager
                     animator.SetBool("Chase", true);
                 }
 
+                break;
+            default:
                 break;
         }
     }

@@ -67,7 +67,6 @@ public class QuestManager : MonoBehaviour
         {
             losePanel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
-            Debug.Log("Lose");
         }
     }
     void WinCondition()
@@ -76,7 +75,6 @@ public class QuestManager : MonoBehaviour
         {
             winPanel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
-            Debug.Log("Win");
         }
     }
 

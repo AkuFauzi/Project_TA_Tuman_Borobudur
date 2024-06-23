@@ -113,7 +113,7 @@ public class TPSController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
         if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayer))
         {
-            debugTranform.position = hit.point;
+           // debugTranform.position = hit.point;
             mouseWorldPosition = hit.point;
         }
 

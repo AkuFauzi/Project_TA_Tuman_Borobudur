@@ -20,6 +20,11 @@ public class Banaspati : EnemyManager
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
 
+        if (distanceToAgent < 10 && State != ENEMYBEHAVIOURS.CHASE && State != ENEMYBEHAVIOURS.ATTACK)
+        {
+            State = ENEMYBEHAVIOURS.RAGE;
+        }
+
         if (healthPoint <= 25)
         {
             State = ENEMYBEHAVIOURS.RAGE;
@@ -78,7 +83,7 @@ public class Banaspati : EnemyManager
                 if(distanceToAgent <= 5)
                 {
                     agent.stoppingDistance = 3f;
-
+                    StartCoroutine(delay());
                     IEnumerator delay()
                     {
                         yield return new WaitForSeconds(2);
