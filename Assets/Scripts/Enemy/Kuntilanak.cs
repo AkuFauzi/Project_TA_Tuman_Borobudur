@@ -25,7 +25,7 @@ public class Kuntilanak : EnemyManager
 
         rigidbody.velocity = Vector3.zero;
 
-        if (distanceToAgent < 10)
+        if (distanceToAgent < 50)
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
@@ -59,7 +59,6 @@ public class Kuntilanak : EnemyManager
                     if (rnd == 1) isIdle = true;
                     if (isIdle)
                     {
-                        Debug.Log("O");
                         StartCoroutine(delay());
                         IEnumerator delay()
                         {
@@ -83,10 +82,11 @@ public class Kuntilanak : EnemyManager
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
 
-                if (distanceToAgent <= 2)
+                if (distanceToAgent <= 4)
                 {
                     agent.stoppingDistance = 1f;
                     State = ENEMYBEHAVIOURS.ATTACK;
+                    animator.SetBool("Chase", false);
                 }
                 else
                 {
@@ -115,8 +115,7 @@ public class Kuntilanak : EnemyManager
                 Destroy(gameObject, 10);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
-                animator.SetBool("Chase", false);
-                animator.SetTrigger("Attack");
+                animator.SetBool("Attack", true);
 
                 Vector3 attackDirwolrd = target.transform.position;
                 attackDirwolrd.y = transform.position.y;
@@ -129,12 +128,10 @@ public class Kuntilanak : EnemyManager
                 if (distanceToAgent >= 4)
                 {
                     State = ENEMYBEHAVIOURS.CHASE;
-                    animator.SetBool("Chase", true);
                 }
                 else if (distanceToAgent >= 4 && healthPoint <= 50)
                 {
                     State = ENEMYBEHAVIOURS.RAGE;
-                    animator.SetBool("Chase", true);
                 }
 
                 break;

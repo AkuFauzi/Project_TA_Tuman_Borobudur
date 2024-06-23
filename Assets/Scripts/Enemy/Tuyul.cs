@@ -24,7 +24,6 @@ public class Tuyul : EnemyManager
         distanceToAgent = distanceToPlayer.magnitude;
 
         rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.zero;
 
         if(distanceToAgent < 10)
         {
@@ -61,7 +60,6 @@ public class Tuyul : EnemyManager
                     if (rnd == 1) isIdle = true;
                     if (isIdle)
                     {
-                        Debug.Log("O");
                         StartCoroutine(delay());
                         IEnumerator delay()
                         {

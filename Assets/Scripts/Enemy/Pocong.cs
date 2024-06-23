@@ -59,7 +59,6 @@ public class Pocong : EnemyManager
                     if (rnd == 1) isIdle = true;
                     if (isIdle)
                     {
-                        Debug.Log("O");
                         StartCoroutine(delay());
                         IEnumerator delay()
                         {
