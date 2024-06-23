@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,7 @@ using UnityEngine.EventSystems;
 public class QuestManager : MonoBehaviour
 {
     public TextMeshProUGUI questText;
+    public StarterAssetsInputs StarterAssetsInputs;
     public ButtonManager buttonManager;
     public BukuManager bukuManager;
     public GameObject losePanel;
@@ -66,6 +68,9 @@ public class QuestManager : MonoBehaviour
         if(healthBar.currentHealth <= 0)
         {
             losePanel.SetActive(true);
+            Time.timeScale = 0;
+            StarterAssetsInputs.cursorLocked = false;
+            StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
         }
     }
@@ -76,10 +81,5 @@ public class QuestManager : MonoBehaviour
             winPanel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
     }
 }

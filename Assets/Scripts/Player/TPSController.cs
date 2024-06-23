@@ -100,7 +100,7 @@ public class TPSController : MonoBehaviour
             Time.timeScale = 1;
             book.SetActive(false);
             StarterAssetsInputs.openBook = false;
-            
+            StarterAssetsInputs.cursorLocked = true;
             StarterAssetsInputs.cursorInputForLook = true;
         }
     }

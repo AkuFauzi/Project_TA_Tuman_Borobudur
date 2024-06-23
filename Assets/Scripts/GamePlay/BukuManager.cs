@@ -25,14 +25,14 @@ public class BukuManager : MonoBehaviour
         {
             if (SaveManager.Local.buku[i])
             {
-                page[i].SetActive(true);
+                paper[i].SetActive(true);
             }
             else
             {
-                page[i].SetActive(false);
+                paper[i].SetActive(false);
             }
         }
-        
+
         BackBT.gameObject.SetActive(false);
     }
 

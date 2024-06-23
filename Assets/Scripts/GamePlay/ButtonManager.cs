@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using StarterAssets;
 
 public class ButtonManager : MonoBehaviour
 {
     public GameObject SettingUI;
+    public StarterAssetsInputs starterAssetsInputs;
 
     [Header("Button pertama")]
     public GameObject mainMenuIFirst;
@@ -43,7 +45,21 @@ public class ButtonManager : MonoBehaviour
 
     public void play()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("GamePlay");
     }
+    public void backMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Retry()
+    {
+        Time.timeScale = 1;
+        starterAssetsInputs.cursorLocked = true;
+        starterAssetsInputs.cursorInputForLook = true;
+        SceneManager.LoadScene("GamePlay");
+    }
+
 
 }

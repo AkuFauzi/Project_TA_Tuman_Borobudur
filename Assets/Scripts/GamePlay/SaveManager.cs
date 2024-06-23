@@ -37,7 +37,7 @@ public class SaveManager : MonoBehaviour
     public class LocalColletion
     {
         public int currentAmmo = 50;
-        public bool[] buku = new bool[8];
+        public bool[] buku = new bool[4];
         public Vector3 playerPosition = new Vector3(4.5f, 8, 226);
         public LocalColletion() { }
     }
