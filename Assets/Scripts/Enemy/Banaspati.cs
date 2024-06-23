@@ -17,6 +17,9 @@ public class Banaspati : EnemyManager
         distanceToPlayer = target.transform.position - agent.transform.position;
         distanceToAgent = distanceToPlayer.magnitude;
 
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+
         if (healthPoint <= 25)
         {
             State = ENEMYBEHAVIOURS.RAGE;
@@ -32,14 +35,35 @@ public class Banaspati : EnemyManager
             case ENEMYBEHAVIOURS.WALK:
                 agent.speed = 5;
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= 1)
                 {
-                    agent.SetDestination(RandomLocation());
+                    if (cdState) return;
+                    bool isIdle = false;
+
+                    int rnd = Random.RandomRange(0, 2);
+                    if (rnd == 1) isIdle = true;
+                    if (isIdle)
+                    {
+                        StartCoroutine(delay());
+                        IEnumerator delay()
+                        {
+                            State = ENEMYBEHAVIOURS.IDLE;
+                            cdState = true;
+                            yield return new WaitForSeconds(Random.RandomRange(3, 5));
+                            State = ENEMYBEHAVIOURS.WALK;
+                            cdState = false;
+                        }
+                    }
+                    else
+                    {
+                        agent.SetDestination(RandomLocation());
+                    }
+
                 }
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 20;
+                agent.speed = 7;
                 agent.SetDestination(target.transform.position);
 
                 break;
@@ -48,16 +72,19 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 15;
+                agent.speed = 7;
                 rigidbody.velocity = Vector3.zero;
-                Transform child = gameObject.transform.GetChild(0).transform;
-                child.position = Vector3.MoveTowards(transform.position, Vector3.zero, 1 *Time.deltaTime);
-                //agent.enabled = false;
-                //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, agent.speed *Time.deltaTime);
-                if(distanceToAgent <= 2)
+               
+                if(distanceToAgent <= 5)
                 {
-                    agent.stoppingDistance = 1f;
-                    agent.velocity = Vector3.zero;
+                    agent.stoppingDistance = 3f;
+
+                    IEnumerator delay()
+                    {
+                        yield return new WaitForSeconds(2);
+                        State = ENEMYBEHAVIOURS.DEATH;
+                    }
+
                     return;
                 }
                 agent.SetDestination(target.transform.position);
@@ -65,6 +92,10 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.DEATH:
+                agent.speed = 0;
+                animator.SetBool("Die", true);
+                BanaspatiCollider.gameObject.transform.localScale = new Vector3(5 , 0, 0);
+                Destroy(gameObject, 2);
                 Debug.Log("L");
 
                 break;

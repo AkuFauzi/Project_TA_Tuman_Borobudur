@@ -24,6 +24,12 @@ public class Kuntilanak : EnemyManager
         distanceToAgent = distanceToPlayer.magnitude;
 
         rigidbody.velocity = Vector3.zero;
+
+        if (distanceToAgent < 10)
+        {
+            State = ENEMYBEHAVIOURS.CHASE;
+        }
+
         if (healthPoint <= 0)
         {
             Debug.Log("D");
@@ -104,7 +110,7 @@ public class Kuntilanak : EnemyManager
                 }
                 break;
             case ENEMYBEHAVIOURS.DEATH:
-                agent.speed = 0;
+                agent.enabled = false;
                 animator.SetBool("Die", true);
                 Destroy(gameObject, 10);
                 break;

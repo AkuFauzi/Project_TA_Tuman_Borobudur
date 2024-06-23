@@ -17,6 +17,7 @@ namespace StarterAssets
 		public bool pause;
 		public bool pickup;
 		public bool openBook;
+		public bool deletesave;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -72,6 +73,11 @@ namespace StarterAssets
         {
             BookInput(value.isPressed);
         }
+		
+		public void OnDS(InputValue value)
+        {
+            DSInput(value.isPressed);
+        }
 #endif
 
 
@@ -118,6 +124,11 @@ namespace StarterAssets
 		public void BookInput(bool newBookState)
         {
             openBook = newBookState;
+        }
+		
+		public void DSInput(bool newDSState)
+        {
+            deletesave = newDSState;
         }
 
         public void OnApplicationFocus(bool hasFocus)

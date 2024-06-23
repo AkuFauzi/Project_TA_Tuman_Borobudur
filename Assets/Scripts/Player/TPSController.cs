@@ -48,10 +48,12 @@ public class TPSController : MonoBehaviour
 
     private void Update()
     {
-        if(healthBar.currentHealth == 0)
+
+        if (StarterAssetsInputs.deletesave)
         {
-            
+            SaveManager.Local = new SaveManager.LocalColletion();
         }
+
         aimShoot();
         pause();
         OpenBook();

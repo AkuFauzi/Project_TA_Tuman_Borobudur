@@ -25,7 +25,7 @@ public abstract class EnemyManager : MonoBehaviour
     public NavMeshAgent agent;
     public HealthBar healthBar;
     public Vector3 distanceToPlayer;
-    public Collider head, body;
+    public Collider BanaspatiCollider;
     public Rigidbody rigidbody;
     public Animator animator;
 

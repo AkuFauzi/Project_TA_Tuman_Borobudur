@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - AttackE
   - Ground
+  - Explode
   layers:
   - Default
   - TransparentFX

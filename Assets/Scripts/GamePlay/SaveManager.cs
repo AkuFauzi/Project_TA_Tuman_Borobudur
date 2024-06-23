@@ -19,6 +19,7 @@ public class SaveManager : MonoBehaviour
         {
             string _data = File.ReadAllText(_filePath);
             Local = JsonUtility.FromJson<LocalColletion>(_data);
+            Debug.Log(_filePath);
         }
         else
         {
