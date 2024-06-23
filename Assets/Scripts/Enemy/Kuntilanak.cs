@@ -32,7 +32,6 @@ public class Kuntilanak : EnemyManager
 
         if (healthPoint <= 0)
         {
-            Debug.Log("D");
             State = ENEMYBEHAVIOURS.DEATH;
         }
         else if (healthPoint <= 50)
