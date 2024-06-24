@@ -47,7 +47,7 @@ public class Tuyul : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 3.8f;
+                agent.speed = 2.8f;
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 

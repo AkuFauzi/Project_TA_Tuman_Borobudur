@@ -30,6 +30,8 @@ namespace StarterAssets
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
+
+        public AudioManager audioManager;
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
@@ -104,7 +106,7 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         public Animator _animator;
-        private CharacterController _controller;
+        public CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
@@ -180,6 +182,8 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+
+            FootstepAudioVolume = audioManager.audioSourceSFX.volume;
         }
 
         private void LateUpdate()

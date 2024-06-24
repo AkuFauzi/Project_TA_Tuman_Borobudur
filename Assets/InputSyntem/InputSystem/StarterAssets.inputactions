@@ -89,7 +89,34 @@
                 {
                     "name": "DeleteSave",
                     "type": "Button",
+                    "id": "cf378dcf-55fe-4a86-b6dc-c99095d93e69",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat 1",
+                    "type": "Button",
                     "id": "98554a85-f504-47b6-b72b-4c96f6ce9036",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat 2",
+                    "type": "Button",
+                    "id": "e657875b-84a5-497f-9c41-9bad89b081f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat 3",
+                    "type": "Button",
+                    "id": "20e27f8c-e27c-49d6-9c18-dd04e4b20a7d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -386,6 +413,39 @@
                 {
                     "name": "",
                     "id": "27830ab5-2fe6-4bed-8799-aa223375a341",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "859ed6d6-2508-4252-994c-ecb4b9a6c6c7",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "482e0c74-0bc3-4a14-a229-00198bf85144",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "560de00e-498c-4794-919a-24bae4f80bd2",
                     "path": "<Keyboard>/delete",
                     "interactions": "",
                     "processors": "",

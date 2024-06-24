@@ -23,6 +23,7 @@ public class TPSController : MonoBehaviour
     public ButtonManager buttonManager;
 
     public GameObject book;
+    public AudioManager AudioManager;
 
     PlayerInput playerInput;
 
@@ -49,14 +50,10 @@ public class TPSController : MonoBehaviour
     private void Update()
     {
 
-        if (StarterAssetsInputs.deletesave)
-        {
-            SaveManager.Local = new SaveManager.LocalColletion();
-        }
-
         aimShoot();
         pause();
         OpenBook();
+        cheat();
     }
 
     public void pause()
@@ -183,5 +180,39 @@ public class TPSController : MonoBehaviour
     }
     bool cooldown;
     bool shoot;
+    bool oncheat;
+    void cheat()
+    {
+        if (StarterAssetsInputs.cheat1)
+        {
+            AudioManager.audioSourceBGM.PlayOneShot(AudioManager.bgmBoss);
+            StarterAssetsInputs.deletesave = false;
+        }
+        if (StarterAssetsInputs.cheat2 && oncheat == false)
+        {
+            Debug.Log("wdja");
+            oncheat = true;
+            healthBar.cheat = true;
+
+            StarterAssetsInputs.cheat2 = false;
+        }
+        else if (StarterAssetsInputs.cheat2 && oncheat == true)
+        {
+            oncheat = false;
+            healthBar.cheat = false;
+            StarterAssetsInputs.cheat2 = false;
+        }
+        if (StarterAssetsInputs.cheat3)
+        {
+            weaponAmmo.currentAmmo = weaponAmmo.maxAmmo;
+            StarterAssetsInputs.deletesave = false;
+        }
+
+        if (StarterAssetsInputs.deletesave)
+        {
+            SaveManager.Local = new SaveManager.LocalColletion();
+            StarterAssetsInputs.deletesave = false;
+        }
+    }
 
 }

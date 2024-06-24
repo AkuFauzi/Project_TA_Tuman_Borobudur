@@ -45,7 +45,7 @@ public class Kuntilanak : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 3.8f;
+                agent.speed = 2.5f;
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 
@@ -77,7 +77,7 @@ public class Kuntilanak : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 7;
+                agent.speed = 5;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
 

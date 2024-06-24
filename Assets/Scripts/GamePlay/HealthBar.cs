@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
 
     bool cooldown;
     bool cooldownHeal;
+    public bool cheat;
     //bool cooldownHeal;
     
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class HealthBar : MonoBehaviour
         healthBar.value = currentHealth;
         if(currentHealth < maxHealth)
         {
-            if(cooldownHeal = false)
+            if(cooldownHeal == false)
             {
                 StartCoroutine(delay());
                 IEnumerator delay()
@@ -46,7 +47,7 @@ public class HealthBar : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (cooldown == false)
+        if (cooldown == false && cheat ==false)
         {
             cooldown = true;
             StartCoroutine(delay());

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    public ThirdPersonController thirdPersonController;
 
     public float volumeBGM;
     public float volumeSFX;
@@ -21,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     string StartSaveVolume = "StartSaveVolume";
 
-    public AudioClip bgmHome, bgmIngame;
+    public AudioClip bgmHome, bgmIngame, bgmBoss;
     public AudioClip sfxButton;
 
     public void Awake()
@@ -52,7 +56,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSourceBGM.PlayOneShot(bgmIngame);
     }
     public void VolumeValueBGM(float value)
     {

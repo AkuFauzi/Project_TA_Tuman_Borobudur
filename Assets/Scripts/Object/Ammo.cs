@@ -22,7 +22,7 @@ public class Ammo : MonoBehaviour
             UIInteract.SetActive(true);
             if (starterAssetsInputs.pickup)
             {
-                weaponAmmo.currentAmmo += 10;
+                weaponAmmo.currentAmmo = weaponAmmo.maxAmmo;
                 starterAssetsInputs.pickup = false;
                 UIInteract.SetActive(false);
                 Destroy(gameObject);
