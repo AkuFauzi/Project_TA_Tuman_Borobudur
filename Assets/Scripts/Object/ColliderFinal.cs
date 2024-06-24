@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColliderFinal : MonoBehaviour
 {
-    public GameObject collider;
+    public GameObject colliderFinal;
     public QuestManager QuestManager;
 
     private void OnTriggerEnter(Collider other)

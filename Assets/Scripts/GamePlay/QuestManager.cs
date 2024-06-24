@@ -27,12 +27,15 @@ public class QuestManager : MonoBehaviour
     public int totalItem;
     public int itemCount;
 
+    public bool death, win;
+
     private void Start()
     {
         losePanel.SetActive(false);
         winPanel.SetActive(false);
         lighting.SetActive(false);
-
+        death = false;
+        win = false;
         itemCount = SaveManager.Local.itemCount;
     }
 
@@ -72,18 +75,19 @@ public class QuestManager : MonoBehaviour
 
     public void LoseCondition()
     {
-        if(healthBar.currentHealth <= 0)
+        if(healthBar.currentHealth <= 0 && death == false)
         {
             losePanel.SetActive(true);
             Time.timeScale = 0;
             StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
+            death = true;
         }
     }
     public void WinCondition()
     {
-        if(bossKunti.healthPoint <= 0)
+        if(bossKunti.healthPoint <= 0 && win == false)
         {
             winPanel.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
