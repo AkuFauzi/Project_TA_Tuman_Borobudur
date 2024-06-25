@@ -114,6 +114,9 @@ public class Tuyul : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
                 animator.SetBool("Die", true);
+                enemyCollider.enabled = false;
+                rigidbody.angularVelocity = Vector3.zero;
+                Destroy(gameObject, 2);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
                 animator.SetBool("Chase", false);

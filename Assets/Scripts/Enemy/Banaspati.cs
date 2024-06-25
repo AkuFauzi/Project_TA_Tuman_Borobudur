@@ -25,7 +25,7 @@ public class Banaspati : EnemyManager
             State = ENEMYBEHAVIOURS.RAGE;
         }
 
-        if (healthPoint <= 25)
+        if (healthPoint <= 20)
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
@@ -39,6 +39,7 @@ public class Banaspati : EnemyManager
         {
             case ENEMYBEHAVIOURS.WALK:
                 agent.speed = 5;
+                animator.SetBool("Walk", true);
 
                 if (agent.remainingDistance <= 1)
                 {
@@ -73,7 +74,8 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.IDLE:
-
+                agent.speed = 0;
+                animator.SetBool("Walk", false);
 
                 break;
             case ENEMYBEHAVIOURS.RAGE:
@@ -99,7 +101,13 @@ public class Banaspati : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
                 animator.SetBool("Die", true);
-                BanaspatiCollider.gameObject.transform.localScale = new Vector3(5 , 0, 0);
+
+
+                if(BanaspatiCollider.gameObject.transform.localScale.x <= 5)
+                {
+                    BanaspatiCollider.gameObject.transform.localScale = new Vector3(Mathf.Clamp(BanaspatiCollider.gameObject.transform.localScale.x, 0, 5), 1, 1);
+                    BanaspatiCollider.gameObject.transform.localScale += Vector3.one * Time.deltaTime * 4;
+                }
                 Destroy(gameObject, 2);
                 Debug.Log("L");
 

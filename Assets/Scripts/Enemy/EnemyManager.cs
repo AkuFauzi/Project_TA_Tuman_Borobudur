@@ -26,6 +26,7 @@ public abstract class EnemyManager : MonoBehaviour
     public HealthBar healthBar;
     public Vector3 distanceToPlayer;
     public Collider BanaspatiCollider;
+    public Collider enemyCollider;
     public Rigidbody rigidbody;
     public Animator animator;
     public GameObject rageEffect;
@@ -36,6 +37,14 @@ public abstract class EnemyManager : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        if(BanaspatiCollider == null)
+        {
+            return;
+        }
+        if(enemyCollider == null)
+        {
+            return;
+        }
     }
     public virtual void Update()
     {

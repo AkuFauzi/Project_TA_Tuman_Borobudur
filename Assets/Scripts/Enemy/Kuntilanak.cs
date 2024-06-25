@@ -113,6 +113,8 @@ public class Kuntilanak : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.enabled = false;
                 animator.SetBool("Die", true);
+                enemyCollider.enabled = false;
+                rigidbody.angularVelocity = Vector3.zero;
                 Destroy(gameObject, 10);
                 break;
             case ENEMYBEHAVIOURS.ATTACK:
