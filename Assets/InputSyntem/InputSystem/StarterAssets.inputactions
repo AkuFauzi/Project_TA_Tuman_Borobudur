@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat 4",
+                    "type": "Button",
+                    "id": "95971954-2977-4b01-9fc5-9bedc7267eed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -451,6 +460,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DeleteSave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ff1b637-ce31-4456-824b-93f6554b75c8",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

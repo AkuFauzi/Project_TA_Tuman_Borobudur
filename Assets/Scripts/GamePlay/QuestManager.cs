@@ -27,7 +27,7 @@ public class QuestManager : MonoBehaviour
     public int totalItem;
     public int itemCount;
 
-    public bool death, win;
+    public bool death, win, level2;
 
     private void Start()
     {
@@ -36,6 +36,7 @@ public class QuestManager : MonoBehaviour
         lighting.SetActive(false);
         death = false;
         win = false;
+        questText.text = isiText[0] + itemCount + "/4";
         itemCount = SaveManager.Local.itemCount;
     }
 
@@ -49,18 +50,20 @@ public class QuestManager : MonoBehaviour
     void QuestUpdate()
     {
         totalItem = itemCount;
-        questText.text = isiText[0] + itemCount+"/4";
-        if (totalItem >= 4)
+        if (totalItem >= 4 && level2 == false)
         {
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
             lighting.SetActive(true);
-            questText.text = isiText[1] + itemCount+"/4";
+            level2 = true;
+            itemCount = 0;
+            questText.text = isiText[1];
         }
-        else if (totalItem >= 8)
+        else if (totalItem >= 4 && level2 == true)
         {
             obstacle[1].SetActive(false);
-            questText.text = isiText[2];
+            timeLine[2].SetActive(true);
+            questText.text = isiText[3];
         }
 
         for (int i = 0; i < bukuManager.itemCollectible.Length; i++)
@@ -90,6 +93,8 @@ public class QuestManager : MonoBehaviour
         if(bossKunti.healthPoint <= 0 && win == false)
         {
             winPanel.SetActive(true);
+            StarterAssetsInputs.cursorLocked = false;
+            StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
         }
     }

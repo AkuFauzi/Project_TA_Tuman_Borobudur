@@ -18,7 +18,7 @@ namespace StarterAssets
 		public bool pickup;
 		public bool openBook;
 		public bool deletesave;
-		public bool cheat1, cheat2, cheat3;
+		public bool cheat1, cheat2, cheat3, cheat4;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -91,6 +91,10 @@ namespace StarterAssets
         {
             OnCheat3Input(value.isPressed);
         }
+		public void OnCheat4(InputValue value)
+        {
+            OnCheat4Input(value.isPressed);
+        }
 #endif
 
 
@@ -154,6 +158,10 @@ namespace StarterAssets
 		public void OnCheat3Input(bool newCheat3State)
         {
             cheat3 = newCheat3State;
+        }
+		public void OnCheat4Input(bool newCheat4State)
+        {
+            cheat4 = newCheat4State;
         }
 
         public void OnApplicationFocus(bool hasFocus)

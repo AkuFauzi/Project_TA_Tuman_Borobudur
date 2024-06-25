@@ -51,6 +51,7 @@ public class ButtonManager : MonoBehaviour
     public void backMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        SaveManager.Local = new SaveManager.LocalColletion();
     }
 
     public void Retry()

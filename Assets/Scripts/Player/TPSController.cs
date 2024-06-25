@@ -21,6 +21,7 @@ public class TPSController : MonoBehaviour
     public ThirdPersonController thirdPersonController;
     public Transform mainCamera;
     public ButtonManager buttonManager;
+    public QuestManager questManager;
 
     public GameObject book;
     public AudioManager AudioManager;
@@ -206,6 +207,11 @@ public class TPSController : MonoBehaviour
         {
             weaponAmmo.currentAmmo = weaponAmmo.maxAmmo;
             StarterAssetsInputs.deletesave = false;
+        }
+        if (StarterAssetsInputs.cheat4)
+        {
+            questManager.itemCount = 4;
+            StarterAssetsInputs.cheat4 = false;
         }
 
         if (StarterAssetsInputs.deletesave)

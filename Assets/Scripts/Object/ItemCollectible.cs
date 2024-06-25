@@ -9,6 +9,8 @@ public class ItemCollectible : MonoBehaviour
     public GameObject UIInteract;
     public StarterAssetsInputs starterAssetsInputs;
 
+    public int typeItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +30,12 @@ public class ItemCollectible : MonoBehaviour
             UIInteract.SetActive(true);
             if (starterAssetsInputs.pickup)
             {
-                questManager.itemCount += 1;
-                starterAssetsInputs.pickup = false;
+                if (typeItem == 1)
+                {
+                    questManager.itemCount += 1;
+                }
                 UIInteract.SetActive(false);
+                starterAssetsInputs.pickup = false;
                 Destroy(gameObject);
             }
         }
