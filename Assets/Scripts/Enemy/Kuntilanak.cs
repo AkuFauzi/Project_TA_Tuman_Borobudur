@@ -11,6 +11,7 @@ public class Kuntilanak : EnemyManager
         target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        rageEffect.SetActive(false);
 
         if (agent != null)
         {
@@ -101,6 +102,7 @@ public class Kuntilanak : EnemyManager
                 agent.speed = 10;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
+                rageEffect.SetActive(true);
                 agent.SetDestination(target.transform.position);
 
                 if (distanceToAgent <= 1)

@@ -28,6 +28,7 @@ public abstract class EnemyManager : MonoBehaviour
     public Collider BanaspatiCollider;
     public Rigidbody rigidbody;
     public Animator animator;
+    public GameObject rageEffect;
 
     public bool cdState;
 

@@ -12,6 +12,7 @@ public class Pocong : EnemyManager
         target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
+        rageEffect.SetActive(false);
 
         if (agent != null)
         {
@@ -101,6 +102,7 @@ public class Pocong : EnemyManager
             case ENEMYBEHAVIOURS.RAGE:
                 agent.speed = 4;
                 animator.SetBool("Walk", true);
+                rageEffect.SetActive(true);
                 agent.SetDestination(target.transform.position);
 
                 if (distanceToAgent <= 2)

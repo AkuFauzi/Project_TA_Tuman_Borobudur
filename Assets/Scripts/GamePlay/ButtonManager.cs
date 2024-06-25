@@ -8,6 +8,8 @@ using StarterAssets;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject SettingUI;
+    public GameObject creditUI;
+    public GameObject mainmenuUI;
     public StarterAssetsInputs starterAssetsInputs;
 
     [Header("Button pertama")]
@@ -15,9 +17,11 @@ public class ButtonManager : MonoBehaviour
     public GameObject winPanelFirst;
     public GameObject losePaneFirst;
     public GameObject settingFirst;
+    public GameObject creditFirst;
     public GameObject NextBookBT;
 
     bool setting;
+    bool credit;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +37,32 @@ public class ButtonManager : MonoBehaviour
         {
             setting = true;
             SettingUI.SetActive(true);
+            mainmenuUI.SetActive(false);
             EventSystem.current.SetSelectedGameObject(settingFirst);
         }
         else
         {
             setting = false;
             SettingUI.SetActive(false);
+            mainmenuUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(mainMenuIFirst);
+        }
+    }
+
+    public void CreditMenu()
+    {
+        if(credit == false)
+        {
+            credit = true;
+            creditUI.SetActive(true);
+            mainmenuUI.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(creditFirst);
+        }
+        else
+        {
+            credit = false;
+            creditUI.SetActive(false);
+            mainmenuUI.SetActive(true);
             EventSystem.current.SetSelectedGameObject(mainMenuIFirst);
         }
     }
