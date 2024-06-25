@@ -32,6 +32,7 @@ public class TPSController : MonoBehaviour
 
     public bool inpause;
     public bool onbook;
+    public bool onOverlay;
 
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class TPSController : MonoBehaviour
         buttonManager = FindObjectOfType<ButtonManager>();
         inpause = false;
         onbook = false;
+        onOverlay = false;
         book.SetActive(false);
     }
 
@@ -59,9 +61,10 @@ public class TPSController : MonoBehaviour
 
     public void pause()
     {
-        if (StarterAssetsInputs.pause && inpause == false)
+        if (StarterAssetsInputs.pause && inpause == false && onOverlay == false)
         {
             inpause = true;
+            onOverlay = true;
             thirdPersonController.enabled = false;
             Time.timeScale = 0;
             buttonManager.SettingUI.SetActive(true);
@@ -69,9 +72,10 @@ public class TPSController : MonoBehaviour
             playerInput.SwitchCurrentActionMap("UI");
             StarterAssetsInputs.pause = false;
         }
-        else if (StarterAssetsInputs.pause && inpause == true)
+        else if (StarterAssetsInputs.pause && inpause == true && onOverlay == true)
         {
             inpause = false;
+            onOverlay = false;
             thirdPersonController.enabled = true;
             Time.timeScale = 1;
             buttonManager.SettingUI.SetActive(false);
@@ -82,9 +86,10 @@ public class TPSController : MonoBehaviour
 
     public void OpenBook()
     {
-        if(StarterAssetsInputs.openBook && onbook == false)
+        if(StarterAssetsInputs.openBook && onbook == false && onOverlay == false)
         {
             onbook = true;
+            onOverlay = true;
             Time.timeScale = 0;
             book.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
@@ -92,9 +97,10 @@ public class TPSController : MonoBehaviour
             StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
         }
-        else if(StarterAssetsInputs.openBook && onbook == true)
+        else if(StarterAssetsInputs.openBook && onbook == true && onOverlay == true)
         {
             onbook = false;
+            onOverlay = false;
             Time.timeScale = 1;
             book.SetActive(false);
             StarterAssetsInputs.openBook = false;
