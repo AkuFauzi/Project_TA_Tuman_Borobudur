@@ -91,8 +91,6 @@ public class TPSController : MonoBehaviour
             Time.timeScale = 0;
             book.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
-            StarterAssetsInputs.openBook = false;
-            StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
         }
         else if(StarterAssetsInputs.openBook && onbook == true && onOverlay == true)
@@ -102,8 +100,6 @@ public class TPSController : MonoBehaviour
             Time.timeScale = 1;
             book.SetActive(false);
             StarterAssetsInputs.openBook = false;
-            StarterAssetsInputs.cursorLocked = true;
-            StarterAssetsInputs.cursorInputForLook = true;
         }
     }
 

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c73ff4122d0a44bb2082c22a23368e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thirdPersonController: {fileID: 0}
   volumeBGM: 0
   volumeSFX: 0
   sliderBGM: {fileID: 0}
@@ -54,6 +55,7 @@ MonoBehaviour:
   audioSourceSFX: {fileID: 6681491681777357019}
   bgmHome: {fileID: 0}
   bgmIngame: {fileID: 0}
+  bgmBoss: {fileID: 0}
   sfxButton: {fileID: 0}
 --- !u!82 &6681491681777357018
 AudioSource:
@@ -69,7 +71,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
