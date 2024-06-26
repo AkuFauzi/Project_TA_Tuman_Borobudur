@@ -30,6 +30,10 @@ public class Kuntilanak : EnemyManager
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
+        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK)
+        {
+            State = ENEMYBEHAVIOURS.WALK;
+        }
 
         if (healthPoint <= 0)
         {

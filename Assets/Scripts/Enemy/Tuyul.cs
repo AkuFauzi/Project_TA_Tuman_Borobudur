@@ -30,6 +30,10 @@ public class Tuyul : EnemyManager
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
+        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK)
+        {
+            State = ENEMYBEHAVIOURS.WALK;
+        }
 
         rigidbody.velocity = Vector3.zero;
         if (healthPoint <= 0)

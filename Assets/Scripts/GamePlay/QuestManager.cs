@@ -13,12 +13,12 @@ public class QuestManager : MonoBehaviour
     public BukuManager bukuManager;
     public GameObject losePanel;
     public GameObject winPanel;
-    public GameObject lighting;
+    public GameObject lighting, lightingBoss;
     public HealthBar healthBar;
     public Kuntilanak bossKunti;
     public GameObject[] obstacle;
     public GameObject[] timeLine;
-    public GameObject[] spwaners;
+    public GameObject[] spawners;
     
 
     [TextArea(3, 10)]
@@ -34,10 +34,16 @@ public class QuestManager : MonoBehaviour
         losePanel.SetActive(false);
         winPanel.SetActive(false);
         lighting.SetActive(false);
+        lighting.SetActive(false);
         death = false;
         win = false;
         questText.text = isiText[0] + itemCount + "/4";
         itemCount = SaveManager.Local.itemCount;
+
+        for (int i = 0; i < spawners.Length; i++)
+        {
+            spawners[i].SetActive(false);
+        }
     }
 
     private void Update()
@@ -63,14 +69,19 @@ public class QuestManager : MonoBehaviour
         {
             obstacle[1].SetActive(false);
             timeLine[2].SetActive(true);
+            lightingBoss.SetActive(true);
             questText.text = isiText[3];
         }
 
-        for (int i = 0; i < bukuManager.itemCollectible.Length; i++)
+        for (int i = 0; i < bukuManager.itemCollectible.Length - 5; i++)
         {
             if (bukuManager.itemCollectible[i] == null)
             {
-                spwaners[i].SetActive(true);
+                spawners[i].SetActive(true);
+            }
+            else
+            {
+                spawners[i].SetActive(false);
             }
         }
         
