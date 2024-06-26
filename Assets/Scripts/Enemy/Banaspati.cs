@@ -10,7 +10,6 @@ public class Banaspati : EnemyManager
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
         rigidbody = GetComponent<Rigidbody>();
-
     }
     public override void Update()
     {
@@ -118,9 +117,6 @@ public class Banaspati : EnemyManager
                 break;
         }
     }
-
-
-
 
     private void OnTriggerEnter(Collider other)
     {

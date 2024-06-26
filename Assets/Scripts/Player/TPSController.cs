@@ -36,8 +36,6 @@ public class TPSController : MonoBehaviour
 
     private void Awake()
     {
-        
-
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
         thirdPersonController = GetComponent<ThirdPersonController>();
         weaponAmmo = GetComponent<WeaponAmmo>();
