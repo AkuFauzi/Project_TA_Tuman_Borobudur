@@ -22,6 +22,7 @@ public class TPSController : MonoBehaviour
     public Transform mainCamera;
     public ButtonManager buttonManager;
     public QuestManager questManager;
+    public Animator animator;
 
     public GameObject book;
     public AudioManager AudioManager;
@@ -55,6 +56,7 @@ public class TPSController : MonoBehaviour
         pause();
         OpenBook();
         cheat();
+        death();
     }
 
     public void pause()
@@ -220,6 +222,16 @@ public class TPSController : MonoBehaviour
         {
             SaveManager.Local = new SaveManager.LocalColletion();
             StarterAssetsInputs.deletesave = false;
+        }
+    }
+
+    void death()
+    {
+        if(healthBar.currentHealth <= 0)
+        {
+            animator.SetTrigger("Death");
+            thirdPersonController.enabled = false;
+            this.enabled = false;
         }
     }
 

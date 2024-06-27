@@ -16,6 +16,7 @@ public class QuestManager : MonoBehaviour
     public GameObject lighting, lightingBoss;
     public HealthBar healthBar;
     public Kuntilanak bossKunti;
+    public TPSController tpsController;
     public GameObject[] obstacle;
     public GameObject[] timeLine;
     public GameObject[] spawners;
@@ -92,7 +93,7 @@ public class QuestManager : MonoBehaviour
         if(healthBar.currentHealth <= 0 && death == false)
         {
             losePanel.SetActive(true);
-            Time.timeScale = 0;
+            tpsController.onOverlay = true;
             StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
