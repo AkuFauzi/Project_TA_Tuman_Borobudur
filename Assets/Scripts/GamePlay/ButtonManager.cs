@@ -22,13 +22,18 @@ public class ButtonManager : MonoBehaviour
 
     bool setting;
     bool credit;
+
+    private void Awake()
+    {
+        SaveManager.Initialize();
+    }
     // Start is called before the first frame update
     void Start()
     {
         SettingUI.SetActive(false);
         setting = false;
 
-        SaveManager.Initialize();
+
     }
 
     public void SettingMainMenu()
