@@ -27,16 +27,16 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         healthBar.value = currentHealth;
-        if(currentHealth < maxHealth)
+        if(currentHealth < maxHealth && cooldown == false)
         {
             if(cooldownHeal == false)
             {
                 StartCoroutine(delay());
                 IEnumerator delay()
                 {
-                    currentHealth += 10;
-                    yield return new WaitForSeconds(1);
-                    cooldown = false;
+                    currentHealth += regenHealth;
+                    yield return new WaitForSeconds(3);
+                    cooldownHeal = false;
 
                 }
             }
@@ -67,12 +67,7 @@ public class HealthBar : MonoBehaviour
                 }
                 yield return new WaitForSeconds(1);
                 cooldown = false;
-
-                
             }
-
         }
-
-
     }
 }

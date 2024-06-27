@@ -92,6 +92,7 @@ public class TPSController : MonoBehaviour
             book.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
             StarterAssetsInputs.cursorInputForLook = false;
+            StarterAssetsInputs.openBook = false;
         }
         else if(StarterAssetsInputs.openBook && onbook == true && onOverlay == true)
         {
@@ -99,6 +100,7 @@ public class TPSController : MonoBehaviour
             onOverlay = false;
             Time.timeScale = 1;
             book.SetActive(false);
+            StarterAssetsInputs.cursorInputForLook = true;
             StarterAssetsInputs.openBook = false;
         }
     }
