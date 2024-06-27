@@ -20,7 +20,6 @@ public abstract class EnemyManager : MonoBehaviour
     public float walkRadius;
     public float distanceToAgent;
     public int healthPoint;
-    public int attackPoint;
     public GameObject target;
     public NavMeshAgent agent;
     public HealthBar healthBar;
