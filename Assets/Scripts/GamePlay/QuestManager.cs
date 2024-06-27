@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
     public BukuManager bukuManager;
     public GameObject losePanel;
     public GameObject winPanel;
+    public GameObject ingameUI;
     public GameObject lighting, lightingBoss;
     public HealthBar healthBar;
     public Kuntilanak bossKunti;
@@ -21,6 +22,7 @@ public class QuestManager : MonoBehaviour
     public GameObject[] timeLine;
     public GameObject[] spawners;
     
+
 
     [TextArea(3, 10)]
     public string[] isiText;
@@ -93,6 +95,7 @@ public class QuestManager : MonoBehaviour
         if(healthBar.currentHealth <= 0 && death == false)
         {
             losePanel.SetActive(true);
+            ingameUI.SetActive(false);
             tpsController.onOverlay = true;
             StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
