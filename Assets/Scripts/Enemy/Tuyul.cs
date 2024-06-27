@@ -52,7 +52,7 @@ public class Tuyul : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 2.8f;
+                agent.speed = 2.5f;
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 
@@ -84,7 +84,7 @@ public class Tuyul : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 7;
+                agent.speed = 3.5f;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
 
@@ -104,7 +104,7 @@ public class Tuyul : EnemyManager
                 animator.SetBool("Walk", false);
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 10;
+                agent.speed = 5;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 rageEffect.SetActive(true);

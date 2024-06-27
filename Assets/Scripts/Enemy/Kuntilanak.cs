@@ -39,7 +39,7 @@ public class Kuntilanak : EnemyManager
         {
             State = ENEMYBEHAVIOURS.DEATH;
         }
-        else if (healthPoint <= 50)
+        else if (healthPoint <= 30)
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
@@ -50,7 +50,7 @@ public class Kuntilanak : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 2.5f;
+                agent.speed = 2f;
                 animator.SetBool("Walk", true);
                 animator.SetBool("Chase", false);
 
@@ -82,7 +82,7 @@ public class Kuntilanak : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 5;
+                agent.speed = 3f;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
 
@@ -103,7 +103,7 @@ public class Kuntilanak : EnemyManager
                 animator.SetBool("Walk", false);
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 10;
+                agent.speed = 5f;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 rageEffect.SetActive(true);

@@ -41,7 +41,7 @@ public class Pocong : EnemyManager
 
             State = ENEMYBEHAVIOURS.DEATH;
         }
-        else if (healthPoint <= 50)
+        else if (healthPoint <= 30)
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
