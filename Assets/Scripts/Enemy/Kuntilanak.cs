@@ -82,7 +82,7 @@ public class Kuntilanak : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 3f;
+                agent.speed = 2f;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
 
@@ -103,7 +103,7 @@ public class Kuntilanak : EnemyManager
                 animator.SetBool("Walk", false);
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 5f;
+                agent.speed = 3f;
                 animator.SetBool("Chase", true);
                 animator.SetBool("Walk", false);
                 rageEffect.SetActive(true);
