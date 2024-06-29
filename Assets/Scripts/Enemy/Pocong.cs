@@ -26,6 +26,7 @@ public class Pocong : EnemyManager
         distanceToAgent = distanceToPlayer.magnitude;
 
         rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
 
         if (distanceToAgent < 10 && State != ENEMYBEHAVIOURS.CHASE && State != ENEMYBEHAVIOURS.ATTACK)
         {
