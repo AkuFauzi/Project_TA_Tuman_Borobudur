@@ -10,6 +10,12 @@ public class Banaspati : EnemyManager
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player");
         rigidbody = GetComponent<Rigidbody>();
+
+        if (agent != null)
+        {
+            State = ENEMYBEHAVIOURS.WALK;
+        }
+
     }
     public override void Update()
     {
@@ -87,6 +93,7 @@ public class Banaspati : EnemyManager
                     StartCoroutine(delay());
                     IEnumerator delay()
                     {
+                        agent.speed = 0;
                         yield return new WaitForSeconds(2);
                         State = ENEMYBEHAVIOURS.DEATH;
                     }

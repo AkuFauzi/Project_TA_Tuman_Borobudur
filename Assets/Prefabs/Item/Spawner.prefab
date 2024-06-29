@@ -102,7 +102,7 @@ MonoBehaviour:
   - {fileID: 4659567665703327112, guid: 99cdbd8929e78ef4bb3526e8181ec6b5, type: 3}
   - {fileID: 4810062938269607673, guid: a28c803ad0b626d4b8f704ceed56bfbf, type: 3}
   locSpawn: {fileID: 0}
-  cooldownSpawn: 30
+  cooldownSpawn: 20
   totalSpawn: 0
   maxSpawn: 5
   spawn: 0
