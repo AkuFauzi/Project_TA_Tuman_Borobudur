@@ -169,7 +169,7 @@ namespace StarterAssets
         }
         IEnumerator savePlayerPosition()
         {
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(1);
             SaveManager.Local.playerPosition = transform.position;
             yield return savePlayerPosition();
 

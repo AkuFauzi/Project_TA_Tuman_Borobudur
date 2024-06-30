@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2512339896126503875, guid: 76a347bd058d58a4e87a82af160598b0, type: 3}
+  - {fileID: 4821670768983765237, guid: 93bd72aa969a34d42bf557286218cca0, type: 3}
   - {fileID: 4659567665703327112, guid: 99cdbd8929e78ef4bb3526e8181ec6b5, type: 3}
   - {fileID: 4810062938269607673, guid: a28c803ad0b626d4b8f704ceed56bfbf, type: 3}
   locSpawn: {fileID: 0}

@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
-using UnityEngine.WSA;
 
 public class TPSController : MonoBehaviour
 {
@@ -73,6 +72,19 @@ public class TPSController : MonoBehaviour
             StarterAssetsInputs.pause = false;
         }
         else if (StarterAssetsInputs.pause && inpause == true && onOverlay == true)
+        {
+            inpause = false;
+            onOverlay = false;
+            thirdPersonController.enabled = true;
+            Time.timeScale = 1;
+            buttonManager.SettingUI.SetActive(false);
+            playerInput.SwitchCurrentActionMap("Player");
+            StarterAssetsInputs.pause = false;
+        }
+    }
+    public void unpause()
+    {
+        if (inpause && onOverlay)
         {
             inpause = false;
             onOverlay = false;

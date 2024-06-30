@@ -31,7 +31,7 @@ public class Tuyul : EnemyManager
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
-        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK)
+        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK && State != ENEMYBEHAVIOURS.IDLE)
         {
             State = ENEMYBEHAVIOURS.WALK;
         }

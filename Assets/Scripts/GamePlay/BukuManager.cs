@@ -26,6 +26,7 @@ public class BukuManager : MonoBehaviour
             if (SaveManager.Local.buku[i])
             {
                 paper[i].SetActive(true);
+                Destroy(itemCollectible[i]);
             }
             else
             {

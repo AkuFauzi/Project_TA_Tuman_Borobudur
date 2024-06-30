@@ -32,8 +32,10 @@ public class ItemCollectible : MonoBehaviour
             {
                 if (typeItem == 1)
                 {
-                    questManager.itemCount += 1;
+                    questManager.totalItem++;
+                    questManager.itemCount++;
                 }
+
                 UIInteract.SetActive(false);
                 starterAssetsInputs.pickup = false;
                 Destroy(gameObject);

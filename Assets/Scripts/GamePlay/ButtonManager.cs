@@ -90,6 +90,10 @@ public class ButtonManager : MonoBehaviour
         starterAssetsInputs.cursorInputForLook = true;
         SceneManager.LoadScene("GamePlay");
     }
+    public void quit()
+    {
+        Application.Quit();
+    }
 
 
 }

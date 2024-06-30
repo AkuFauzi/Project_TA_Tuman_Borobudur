@@ -20,27 +20,32 @@ public class HealthBar : MonoBehaviour
     {
         maxHealth = 100;
         currentHealth = maxHealth;
-        cooldownHeal = false;
+        cooldownHeal = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         healthBar.value = currentHealth;
-        if(currentHealth < maxHealth && cooldown == false)
+        if (currentHealth < maxHealth && cooldown == false)
         {
-            if(cooldownHeal == false)
+            if (cooldownHeal == true)
             {
                 StartCoroutine(delay());
                 IEnumerator delay()
                 {
-                    currentHealth += regenHealth;
-                    yield return new WaitForSeconds(3);
                     cooldownHeal = false;
+                    yield return new WaitForSeconds(10);
+                    currentHealth += regenHealth;
+                    if (currentHealth > maxHealth)
+                    {
+                        currentHealth = maxHealth;
+                    }
+                    cooldownHeal = true;
 
                 }
             }
-   
+
         }
 
     }

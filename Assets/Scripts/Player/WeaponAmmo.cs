@@ -18,6 +18,7 @@ public class WeaponAmmo : MonoBehaviour
     {
         maxAmmo = 50;
         currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
+        SaveManager.Local.currentAmmo = currentAmmo;
         ammoText.text = currentAmmo + "/" + maxAmmo;
     }
 

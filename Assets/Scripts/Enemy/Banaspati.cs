@@ -29,6 +29,10 @@ public class Banaspati : EnemyManager
         {
             State = ENEMYBEHAVIOURS.RAGE;
         }
+        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK && State != ENEMYBEHAVIOURS.IDLE)
+        {
+            State = ENEMYBEHAVIOURS.WALK;
+        }
 
         if (healthPoint <= 20)
         {
@@ -43,7 +47,7 @@ public class Banaspati : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 5;
+                agent.speed = 2f;
                 animator.SetBool("Walk", true);
 
                 if (agent.remainingDistance <= 1)
@@ -74,7 +78,7 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.CHASE:
-                agent.speed = 7;
+                agent.speed = 4f;
                 agent.SetDestination(target.transform.position);
 
                 break;
@@ -84,7 +88,7 @@ public class Banaspati : EnemyManager
 
                 break;
             case ENEMYBEHAVIOURS.RAGE:
-                agent.speed = 7;
+                agent.speed = 4.5f;
                 rigidbody.velocity = Vector3.zero;
                
                 if(distanceToAgent <= 5)
@@ -107,7 +111,6 @@ public class Banaspati : EnemyManager
             case ENEMYBEHAVIOURS.DEATH:
                 agent.speed = 0;
                 animator.SetBool("Die", true);
-
 
                 if(BanaspatiCollider.gameObject.transform.localScale.x <= 5)
                 {

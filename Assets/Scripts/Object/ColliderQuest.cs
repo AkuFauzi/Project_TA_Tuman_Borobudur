@@ -6,12 +6,13 @@ public class ColliderQuest : MonoBehaviour
 {
     public QuestManager questManager;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             questManager.timeLine[1].SetActive(true);
             questManager.questText.text = questManager.isiText[2] + questManager.itemCount + "/4";
+            Destroy(gameObject);
         }
     }
 }

@@ -32,7 +32,7 @@ public class Pocong : EnemyManager
         {
             State = ENEMYBEHAVIOURS.CHASE;
         }
-        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK)
+        else if (distanceToAgent > 15 && State != ENEMYBEHAVIOURS.ATTACK && State != ENEMYBEHAVIOURS.IDLE)
         {
             State = ENEMYBEHAVIOURS.WALK;
         }
@@ -53,7 +53,7 @@ public class Pocong : EnemyManager
         switch (State)
         {
             case ENEMYBEHAVIOURS.WALK:
-                agent.speed = 2.5f;
+                agent.speed = 3f;
                 animator.SetBool("Walk", true);
 
                 if (agent.remainingDistance <= 1)

@@ -40,17 +40,20 @@ public class QuestManager : MonoBehaviour
         lighting.SetActive(false);
         death = false;
         win = false;
-        questText.text = isiText[0] + itemCount + "/4";
+
         itemCount = SaveManager.Local.itemCount;
 
         for (int i = 0; i < spawners.Length; i++)
         {
             spawners[i].SetActive(false);
         }
+
     }
 
     private void Update()
     {
+        SaveManager.Local.itemCount = itemCount;
+        itemLoad();
         QuestUpdate();
         WinCondition();
         LoseCondition();
@@ -58,22 +61,22 @@ public class QuestManager : MonoBehaviour
 
     void QuestUpdate()
     {
-        totalItem = itemCount;
-        if (totalItem >= 4 && level2 == false)
+        questText.text = isiText[0] + " " + totalItem + "/4";
+        if (itemCount >= 4 && level2 == false)
         {
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
             lighting.SetActive(true);
             level2 = true;
-            itemCount = 0;
+            totalItem = 0;
             questText.text = isiText[1];
         }
-        else if (totalItem >= 4 && level2 == true)
+        else if (itemCount >= 8 && level2 == true)
         {
             obstacle[1].SetActive(false);
             timeLine[2].SetActive(true);
             lightingBoss.SetActive(true);
-            questText.text = isiText[3];
+            questText.text = isiText[3] + " " + totalItem + "/4";
         }
 
         for (int i = 0; i < bukuManager.itemCollectible.Length - 5; i++)
@@ -111,6 +114,22 @@ public class QuestManager : MonoBehaviour
             StarterAssetsInputs.cursorLocked = false;
             StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
+        }
+    }
+
+    public void itemLoad()
+    {
+        for (int i = 0; i < bukuManager.paper.Length; i++)
+        {
+            if (SaveManager.Local.buku[i])
+            {
+                bukuManager.paper[i].SetActive(true);
+                Destroy(bukuManager.itemCollectible[i]);
+            }
+            else
+            {
+                bukuManager.paper[i].SetActive(false);
+            }
         }
     }
 }
