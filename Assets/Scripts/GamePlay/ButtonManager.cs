@@ -33,7 +33,6 @@ public class ButtonManager : MonoBehaviour
         SettingUI.SetActive(false);
         setting = false;
 
-
     }
 
     public void SettingMainMenu()
@@ -43,6 +42,7 @@ public class ButtonManager : MonoBehaviour
             setting = true;
             SettingUI.SetActive(true);
             mainmenuUI.SetActive(false);
+            Cursor.visible = true;
             EventSystem.current.SetSelectedGameObject(settingFirst);
         }
         else
@@ -50,6 +50,7 @@ public class ButtonManager : MonoBehaviour
             setting = false;
             SettingUI.SetActive(false);
             mainmenuUI.SetActive(true);
+            Cursor.visible = false;
             EventSystem.current.SetSelectedGameObject(mainMenuIFirst);
         }
     }
@@ -86,7 +87,6 @@ public class ButtonManager : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1;
-        starterAssetsInputs.cursorLocked = true;
         starterAssetsInputs.cursorInputForLook = true;
         SceneManager.LoadScene("GamePlay");
     }

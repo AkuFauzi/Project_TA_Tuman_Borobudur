@@ -100,7 +100,7 @@ public class QuestManager : MonoBehaviour
             losePanel.SetActive(true);
             ingameUI.SetActive(false);
             tpsController.onOverlay = true;
-            StarterAssetsInputs.cursorLocked = false;
+            Cursor.lockState = CursorLockMode.None;
             StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.losePaneFirst);
             death = true;
@@ -111,7 +111,7 @@ public class QuestManager : MonoBehaviour
         if(bossKunti.healthPoint <= 0 && win == false)
         {
             winPanel.SetActive(true);
-            StarterAssetsInputs.cursorLocked = false;
+            Cursor.lockState = CursorLockMode.None;
             StarterAssetsInputs.cursorInputForLook = false;
             EventSystem.current.SetSelectedGameObject(buttonManager.winPanelFirst);
         }

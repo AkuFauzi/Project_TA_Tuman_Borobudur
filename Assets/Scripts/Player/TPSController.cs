@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 
 public class TPSController : MonoBehaviour
@@ -46,6 +45,7 @@ public class TPSController : MonoBehaviour
         onbook = false;
         onOverlay = false;
         book.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -64,6 +64,9 @@ public class TPSController : MonoBehaviour
         {
             inpause = true;
             onOverlay = true;
+
+            Cursor.lockState = CursorLockMode.None;
+
             thirdPersonController.enabled = false;
             Time.timeScale = 0;
             buttonManager.SettingUI.SetActive(true);
@@ -75,6 +78,9 @@ public class TPSController : MonoBehaviour
         {
             inpause = false;
             onOverlay = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
+
             thirdPersonController.enabled = true;
             Time.timeScale = 1;
             buttonManager.SettingUI.SetActive(false);
@@ -88,11 +94,15 @@ public class TPSController : MonoBehaviour
         {
             inpause = false;
             onOverlay = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
+
             thirdPersonController.enabled = true;
             Time.timeScale = 1;
             buttonManager.SettingUI.SetActive(false);
             playerInput.SwitchCurrentActionMap("Player");
             StarterAssetsInputs.pause = false;
+
         }
     }
 
@@ -103,6 +113,8 @@ public class TPSController : MonoBehaviour
             onbook = true;
             onOverlay = true;
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+
             book.SetActive(true);
             EventSystem.current.SetSelectedGameObject(buttonManager.NextBookBT);
             StarterAssetsInputs.cursorInputForLook = false;
@@ -112,6 +124,7 @@ public class TPSController : MonoBehaviour
         {
             onbook = false;
             onOverlay = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
             book.SetActive(false);
             StarterAssetsInputs.cursorInputForLook = true;
