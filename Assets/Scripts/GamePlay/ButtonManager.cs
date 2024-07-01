@@ -42,7 +42,6 @@ public class ButtonManager : MonoBehaviour
             setting = true;
             SettingUI.SetActive(true);
             mainmenuUI.SetActive(false);
-            Cursor.visible = true;
             EventSystem.current.SetSelectedGameObject(settingFirst);
         }
         else
@@ -50,7 +49,6 @@ public class ButtonManager : MonoBehaviour
             setting = false;
             SettingUI.SetActive(false);
             mainmenuUI.SetActive(true);
-            Cursor.visible = false;
             EventSystem.current.SetSelectedGameObject(mainMenuIFirst);
         }
     }

@@ -138,10 +138,10 @@ public class TPSController : MonoBehaviour
 
         Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 500f, aimColliderLayer))
         {
            // debugTranform.position = hit.point;
-            mouseWorldPosition = hit.point;
+           mouseWorldPosition = hit.point;
         }
 
 

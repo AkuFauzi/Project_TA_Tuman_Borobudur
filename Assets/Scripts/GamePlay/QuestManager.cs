@@ -67,9 +67,18 @@ public class QuestManager : MonoBehaviour
             timeLine[0].SetActive(true);
             obstacle[0].SetActive(false);
             lighting.SetActive(true);
+            Time.timeScale = 0;
             level2 = true;
             totalItem = 0;
             questText.text = isiText[1];
+
+            StartCoroutine(time());
+            IEnumerator time()
+            {
+                yield return new WaitForSecondsRealtime(5.3f);
+                Time.timeScale = 1;
+                Debug.Log("dwaiajdaiojdioa");
+            }
         }
         else if (itemCount >= 8 && level2 == true)
         {
@@ -77,6 +86,13 @@ public class QuestManager : MonoBehaviour
             timeLine[2].SetActive(true);
             lightingBoss.SetActive(true);
             questText.text = isiText[3] + " " + totalItem + "/4";
+            Time.timeScale = 0;
+            StartCoroutine(time());
+            IEnumerator time()
+            {
+                yield return new WaitForSecondsRealtime(8.5f);
+                Time.timeScale = 1;
+            }
         }
 
         for (int i = 0; i < bukuManager.itemCollectible.Length - 5; i++)

@@ -12,7 +12,15 @@ public class ColliderQuest : MonoBehaviour
         {
             questManager.timeLine[1].SetActive(true);
             questManager.questText.text = questManager.isiText[2] + questManager.itemCount + "/4";
-            Destroy(gameObject);
+            Time.timeScale = 0;
+            StartCoroutine(time());
+            IEnumerator time()
+            {
+                yield return new WaitForSecondsRealtime(26f);
+                Time.timeScale = 1;
+                Destroy(gameObject);
+            }
+           
         }
     }
 

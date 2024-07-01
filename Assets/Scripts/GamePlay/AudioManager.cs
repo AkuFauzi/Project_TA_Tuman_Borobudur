@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public float volumeBGM;
     public float volumeSFX;
 
+    public AudioSource[] BGMEnvi;
+
     public Slider sliderBGM;
     public Slider sliderSFX;
 
@@ -59,6 +61,14 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSourceBGM.PlayOneShot(bgmIngame);
+    }
+
+    private void Update()
+    {
+        for(int i = 0; i < BGMEnvi.Length; i++)
+        {
+            BGMEnvi[i].volume = audioSourceBGM.volume;
+        }
     }
     public void VolumeValueBGM(float value)
     {

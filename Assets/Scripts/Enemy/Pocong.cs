@@ -164,6 +164,7 @@ public class Pocong : EnemyManager
         if(other.gameObject.tag == "Bullet")
         {
             healthPoint -= 10;
+            State = ENEMYBEHAVIOURS.CHASE;
         }
     }
 }
