@@ -33,6 +33,7 @@ public class TPSController : MonoBehaviour
     public bool onbook;
     public bool onOverlay;
 
+
     private void Awake()
     {
         StarterAssetsInputs = GetComponent<StarterAssetsInputs>();
@@ -44,8 +45,10 @@ public class TPSController : MonoBehaviour
         inpause = false;
         onbook = false;
         onOverlay = false;
-        book.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
+        book.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        thirdPersonController.enabled = false;
+        Time.timeScale = 0;
     }
 
     private void Update()
@@ -56,6 +59,18 @@ public class TPSController : MonoBehaviour
         OpenBook();
         cheat();
         death();
+    }
+    
+    public void close()
+    {
+        onbook = false;
+        onOverlay = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
+        book.SetActive(false);
+        StarterAssetsInputs.cursorInputForLook = true;
+        StarterAssetsInputs.openBook = false;
+        thirdPersonController.enabled = true;
     }
 
     public void pause()
